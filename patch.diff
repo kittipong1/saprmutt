@@ -1,0 +1,25 @@
+From ba32986063a53fbc81a947660a89389a831136fc Mon Sep 17 00:00:00 2001
+From: "BRIGHTPC\\Bright" <qupelor21@gmail.com>
+Date: Mon, 18 Sep 2017 11:25:37 +0700
+Subject: [PATCH] image
+
+---
+ backend/views/image/index.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backend/views/image/index.php b/backend/views/image/index.php
+index bf381b0..06036a1 100644
+--- a/backend/views/image/index.php
++++ b/backend/views/image/index.php
+@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
+             'format'=>'html',
+             'value'=> function($model){
+                 if($model->path!=''){
+-                    return '<video src="../uploads/images/'.$model->path.'" style="width: 200px;height: 200px;"';
++                    return '<img src="../uploads/images/'.$model->path.'" style="width: 200px;height: 200px;">';
+                 }
+             }],
+              ['attribute'=>'status',
+-- 
+2.11.0.windows.1
+

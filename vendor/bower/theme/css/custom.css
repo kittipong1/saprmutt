@@ -1,0 +1,125 @@
+.img-thumbnail {
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+}
+.btn-search{
+	background-color: #eee;
+	border: 0;
+}
+hr {
+    border-top: 1px solid #ddd;
+}
+.post-type{
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+.post-type img{
+	width: 100%;
+	height: 100%;
+}
+.panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#calendar h2{
+	font-size: 16px;
+}
+#calendar.fc button{
+	padding: 2px 4px;
+	height: auto;
+}
+#calendar .fc-basic-view .fc-body .fc-row {
+    min-height: 2em;
+}
+#calendar thead tr th{
+	background-color: rgba(85, 210, 210, 0.25);
+}
+.fc-ltr .fc-basic-view .fc-day-top span.fc-day-number{
+	font-size: 14px;
+}
+ul.icons-list li a{
+	color: #333;
+}
+ul.icons-list li a:hover{
+	color: #38CBCB;
+}
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#container.bg-white{
+	background-image: none !important;
+	background-color: #fff !important;
+}
+.bg-white{
+	background-color: #fff !important;
+}
+.panel-default>.panel-heading .badge {
+    margin-top: -4px;
+}
+.call-action-style2:hover, .btn-system:hover{
+	box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+.call-action-style2, .btn-system{
+    transition: all 0.3s ease;
+}
+.nav-tabs > li > a{
+	font-size: 22px;
+}
+.nav-tabs > li > a {
+	padding: 10px 10px 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.post-footer{
+	/*margin-left: 110px;*/
+	padding: 0.5em;
+	border-radius: 4px;
+    background-color: #ddd;
+}
+.tab-content {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.btn-warning {
+    color: #fff !important;
+}
+.portfolio-item-footer p{
+	text-align: left !important;
+	margin: 0;
+}
+.portfolio-item-footer{
+	padding: 4px;
+    border: 1px solid #ddd;
+    border-top: 0;
+}
+.member-footer{
+	background-color: #ddd;
+	padding: 4px 8px;
+}
+.well.sidebar{
+	margin-bottom: 0;
+}
+.well-white{
+	background-color: #fff;
+}
+.block-with-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+}
+.flickr-widget ul li {
+    margin-bottom: 20px;
+    background-color: rgba(233, 219, 149, 0.52);
+}
+.member-info h5{
+	padding: 6px 10px;
+}
