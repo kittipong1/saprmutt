@@ -73,7 +73,7 @@ Student Activities of RMUTT
                     <?= Html::a('รายงานผล',Url::to(['site/publicize'])); ?>
                     </li>
                      <li>
-                     <?= Html::a('ภาพกิจกรรม',Url::to(['site/gallery'])); ?>
+                     <?= Html::a('ภาพกิจกรรม',Url::to(['site/gallery'.'/?photo=1'])); ?>
                     </li>
                     <li>
                     <?= Html::a('ติดต่อเรา',Url::to(['site/aboutus'])); ?>
@@ -83,10 +83,20 @@ Student Activities of RMUTT
 
                     <?php 
                     if(Yii::$app->user->isGuest){
-                        echo '<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
+                        echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
-                       echo   '<li>'.Html::a('เมนู <i class="fa fa-caret-down"></i>','#').'<ul class="dropdown">
-                            <li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li></ul></li></li><li>'.
+                        echo'<li>'.Html::a('เมนู <i class="fa fa-caret-down"></i>','#').'<ul class="dropdown">
+                            <li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li>';
+
+                            if(Yii::$app->user->identity->auth_status == 'deputy'){
+                                echo '<li>'.Html::a('เพิ่มประเภทกิจกรรม',Url::to(['activity/index'])).'</li>';
+                            }
+                            if(Yii::$app->user->identity->auth_status == 'deputy' || Yii::$app->user->identity->auth_status == 'teacher' || Yii::$app->user->identity->auth_status == 'boss'){
+                                echo '<li>'.Html::a('จัดการข่าวสาร',Url::to(['news/index'])).'</li>';
+                            }
+                        echo'</ul>
+                            </li>
+                            </li><li>'.
                                 Html::a('ออกจากระบบ',['/site/logout'],['data-method' => 'post']).
                                 '';
                     }
