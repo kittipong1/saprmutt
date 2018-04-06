@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\models;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\news;
+use app\models\News;
 
 /**
- * newssearch represents the model behind the search form about `app\models\news`.
+ * NewsSearch represents the model behind the search form about `app\models\News`.
  */
-class newssearch extends news
+class NewsSearch extends News
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class newssearch extends news
     public function rules()
     {
         return [
-            [['news_id', 'news_type_id', 'user_id', 'news_type_lang', 'news_view'], 'integer'],
-            [['news_name', 'news_explain', 'news_image', 'create_date', 'modified_date', 'active'], 'safe'],
+            [['news_id', 'news_type_id', 'user_id', 'news_type_lang', 'news_view', 'fac_id'], 'integer'],
+            [['news_name', 'news_explain', 'news_image', 'create_date', 'modified_date', 'active', 'news_description'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class newssearch extends news
      */
     public function search($params)
     {
-        $query = news::find();
+        $query = News::find();
 
         // add conditions that should always apply here
 
@@ -66,12 +66,14 @@ class newssearch extends news
             'create_date' => $this->create_date,
             'modified_date' => $this->modified_date,
             'news_view' => $this->news_view,
+            'fac_id' => $this->fac_id,
         ]);
 
         $query->andFilterWhere(['like', 'news_name', $this->news_name])
             ->andFilterWhere(['like', 'news_explain', $this->news_explain])
             ->andFilterWhere(['like', 'news_image', $this->news_image])
-            ->andFilterWhere(['like', 'active', $this->active]);
+            ->andFilterWhere(['like', 'active', $this->active])
+            ->andFilterWhere(['like', 'news_description', $this->news_description]);
 
         return $dataProvider;
     }

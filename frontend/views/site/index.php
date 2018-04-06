@@ -256,7 +256,7 @@ use yii\helpers\Url;
                               '.Html::a('อ่านต่อ..>',Url::to(['site/detail_news/?id='.$news[$x]->news_id])).'</p>
                             </div>
                             <div class="post-footer">
-                              ชื่อหน่วยงาน : '.$news[$x]->news_id.'
+                              ชื่อหน่วยงาน : '.$news[$x]->fac_id.'
                               
                               </div>
                           </div>';
@@ -267,6 +267,7 @@ use yii\helpers\Url;
                         <div class="col-sm-6" style="background-color:lavender;">
 
                         <?php  
+
                            for ($x = 2; $x <= 3; $x++) {
                             $date = explode('-', $news[$x]->create_date);
                             $str_rep = str_replace(' ', ':',$date);
@@ -325,7 +326,7 @@ use yii\helpers\Url;
                               '.Html::a('อ่านต่อ..>',Url::to(['site/detail_news/?id='.$news[$x]->news_id])).'</p>
                             </div>
                             <div class="post-footer">
-                              ชื่อหน่วยงาน : '.$news[$x]->news_id.'
+                              ชื่อหน่วยงาน : '.$news[$x]->fac_id.'
                               
                               </div>
                           </div>';

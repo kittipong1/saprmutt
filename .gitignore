@@ -36,3 +36,4 @@ phpunit.phar
 /.vagrant
 admin/assets/
 assets/
+vendor/bower-asset/

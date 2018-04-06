@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\models;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\newstype;
+use app\models\FacType;
 
 /**
- * news_typesearch represents the model behind the search form about `app\models\newstype`.
+ * FactypeSearch represents the model behind the search form about `app\models\FacType`.
  */
-class news_typesearch extends newstype
+class FactypeSearch extends FacType
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class news_typesearch extends newstype
     public function rules()
     {
         return [
-            [['news_type_id'], 'integer'],
-            [['news_type_name', 'create_date', 'create_by', 'modified_date'], 'safe'],
+            [['id_type'], 'integer'],
+            [['type_name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class news_typesearch extends newstype
      */
     public function search($params)
     {
-        $query = newstype::find();
+        $query = FacType::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,10 @@ class news_typesearch extends newstype
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'news_type_id' => $this->news_type_id,
-            'create_date' => $this->create_date,
-            'modified_date' => $this->modified_date,
+            'id_type' => $this->id_type,
         ]);
 
-        $query->andFilterWhere(['like', 'news_type_name', $this->news_type_name])
-            ->andFilterWhere(['like', 'create_by', $this->create_by]);
+        $query->andFilterWhere(['like', 'type_name', $this->type_name]);
 
         return $dataProvider;
     }

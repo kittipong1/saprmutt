@@ -51,9 +51,9 @@
 /*------------------------------------------*/
 body {
 	font-family: 'quark_lightlight';
-	font-size: 16px;
+	font-size: 18px;
     line-height: 21px;
-	font-weight: 300;
+	font-weight: 900;
 	color: #000;
 	overflow-x: hidden;
 	/*background: url(../images/patterns/1.png) fixed repeat;*/

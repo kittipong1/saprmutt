@@ -15,7 +15,7 @@ use Yii;
  *
  * @property News[] $news
  */
-class NewsType extends \yii\db\ActiveRecord
+class newstype extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

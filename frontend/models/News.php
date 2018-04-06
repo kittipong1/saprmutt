@@ -13,12 +13,13 @@ use Yii;
  * @property integer $news_type_lang
  * @property string $news_name
  * @property string $news_explain
- * @property resource $news_image
+ * @property string $news_image
  * @property string $create_date
  * @property string $modified_date
  * @property integer $news_view
  * @property string $active
  * @property string $news_description
+ * @property integer $fac_id
  *
  * @property NewsType $newsType
  */
@@ -39,7 +40,8 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['news_type_id', 'user_id', 'news_type_lang', 'news_view'], 'integer'],
+            [['news_type_id', 'user_id', 'news_type_lang', 'news_view', 'fac_id'], 'integer'],
+            [['user_id', 'create_date', 'fac_id'], 'required'],
             [['news_image', 'news_description'], 'string'],
             [['create_date', 'modified_date'], 'safe'],
             [['news_name'], 'string', 'max' => 200],
@@ -59,14 +61,15 @@ class News extends \yii\db\ActiveRecord
             'news_type_id' => 'News Type ID',
             'user_id' => 'id admin',
             'news_type_lang' => 'News Type Lang',
-            'news_name' => 'ชื่อข่าว',
-            'news_explain' => 'รายละเอียดข่าวสารย่อย (intro)',
-            'news_image' => 'รูปข่าวหน้าปก',
+            'news_name' => 'News Name',
+            'news_explain' => 'News Explain',
+            'news_image' => 'News Image',
             'create_date' => 'Create Date',
             'modified_date' => 'Modified Date',
             'news_view' => 'News View',
             'active' => 'Active',
             'news_description' => 'รายละเอียดข่าวสาร',
+            'fac_id' => 'Fac ID',
             'news_imagepath'=>'รูปข่าว'
         ];
     }

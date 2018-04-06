@@ -3,17 +3,17 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\News;
-use app\models\NewsSearch;
+use app\models\newstype;
+use app\models\news_typesearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 use yii\filters\AccessControl;
+
 /**
- * NewsController implements the CRUD actions for News model.
+ * News_typeController implements the CRUD actions for newstype model.
  */
-class NewsController extends Controller
+class NewstypeController extends Controller
 {
     /**
      * @inheritdoc
@@ -25,12 +25,12 @@ class NewsController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create','update','view','mynews'],
+                        'actions' => ['index', 'create','update','view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => [ 'create','update','delete'],
+                        'actions' => ['index', 'create','update','view','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -46,24 +46,12 @@ class NewsController extends Controller
     }
 
     /**
-     * Lists all News models.
+     * Lists all newstype models.
      * @return mixed
      */
-
-    public function actionMynews()
-    {
-       
-        $searchModel = new NewsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $searchModel['user_id'] = Yii::$app->user->identity->id ;
-        return $this->render('mynews', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
+        $searchModel = new news_typesearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -73,7 +61,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single News model.
+     * Displays a single newstype model.
      * @param integer $id
      * @return mixed
      */
@@ -85,95 +73,92 @@ class NewsController extends Controller
     }
 
     /**
-     * Creates a new News model.
+     * Creates a new newstype model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-     public function actionCreate()
+    public function actionCreate()
     {
-        $model = new News();
-
-         if ($model->load(Yii::$app->request->post())) {
+        $model = new newstype();
+        if(Yii::$app->user->identity->auth_status =='deputy'){
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $model->create_by = Yii::$app->user->identity->username;
             $model->create_date = date('Y-m-d H:i:s');
             $model->modified_date = date('Y-m-d H:i:s');
-            $model->news_view = 0;
-            $model->news_type_lang = '1';
-            $model->active = 'y';
-            $model->user_id = Yii::$app->user->identity->id;
-
-             $file = UploadedFile::getInstance($model,'news_imagepath');
-            if($file->size!=0){
-                mkdir("./uploads/news/".$model->news_type_id, 0777, true);
-                $model->news_image = $file->basename.'.'.$file->extension;
-                $file->saveAs('./uploads/news/'.$model->news_type_id.'/'.$file->basename.'.'.$file->extension);
-             
-            }
             
             if($model->save()){
                 $model->save();
             }
-            return $this->redirect(['index']);
+             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+           }
+           else{
+                 throw new NotFoundHttpException("can't update this item because you don't have promiss.");
+           }
     }
 
     /**
-     * Updates an existing News model.
+     * Updates an existing newstype model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        
-
-
+         if(Yii::$app->user->identity->auth_status =='deputy'){
         $model = $this->findModel($id);
-        if($model->user_id == Yii::$app->user->identity->id){
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->news_id]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->modified_date = date('Y-m-d H:i:s');
+            if($model->save()){
+                $model->save();
+            }
+             return $this->redirect(['index']);
+            
         } else {
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
-        }
-        else{
-            throw new NotFoundHttpException("can't update this item because you don't have promiss.");
-        }
+    }
+     else{
+                 throw new NotFoundHttpException("can't update this item because you don't have promiss.");
+           }
     }
 
     /**
-     * Deletes an existing News model.
+     * Deletes an existing newstype model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $model = $this->findModel($id);
-       if($model->user_id == Yii::$app->user->identity->id){
+        if(Yii::$app->user->identity->auth_status =='deputy'){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }else{
-            throw new NotFoundHttpException("can't update this item because you don't have promiss.");
-        }
+         }
+     else{
+                 throw new NotFoundHttpException("can't update this item because you don't have promiss.");
+           }
     }
 
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the newstype model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return News the loaded model
+     * @return newstype the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = newstype::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

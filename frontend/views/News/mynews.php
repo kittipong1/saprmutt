@@ -28,7 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'news_id',
             //'news_type_id',
-            //'user_id',
+            // 'user_id',
+            // ['attribute'=>'user_id',
+            // 'contentOptions' => ['class' => 'text-center'],
+            // 'headerOptions' => ['class' => 'text-center'],],
             // ['attribute'=>'news_type_lang',
             // 'contentOptions' => ['class' => 'text-center'],
             // 'headerOptions' => ['class' => 'text-center'],
@@ -75,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //     }
             // }],
 
-            ['class' => 'yii\grid\ActionColumn','template' => '{view}'],
+            ['class' => 'yii\grid\ActionColumn','template' => '{update}{delete}'],
         ],
     ]); ?>
 </div>

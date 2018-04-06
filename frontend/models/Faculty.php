@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "faculty".
  *
- * @property integer $Faculty_id
+ * @property string $Faculty_id
  * @property string $Fac_key
  * @property string $Fac_name
  */

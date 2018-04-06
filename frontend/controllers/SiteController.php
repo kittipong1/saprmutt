@@ -21,7 +21,7 @@ use app\models\NewsType;
 use yii\data\ActiveDataProvider;
 use app\models\About;
 use app\models\Banner;
-
+use app\models\Faculty;
 /**
  * Site controller
  */
@@ -84,10 +84,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $newsall = News::find()->all();
+        $newsall = News::find()->orderBy(['create_date'=>SORT_DESC])->all();
         $news = array();
         foreach ($newsall as $key => $value) {
             $news[$key] = $value;
+            $a = Faculty::findone(['Faculty_id'=>$value->fac_id]); 
+            $news[$key]['fac_id'] = $a->Fac_name ;
         }
         $albumall = album::find()->all();
         $album = array();
