@@ -87,7 +87,18 @@ Student Activities of RMUTT
                     }else{ 
                         echo'<li>'.Html::a('เมนู <i class="fa fa-caret-down"></i>','#').'<ul class="dropdown">
                             <li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li>';
-
+                            if(Yii::$app->user->identity->auth_status == 'admin'){
+                                echo '<li>'.Html::a('เพิ่มรายชื่อนักศึกษา',Url::to(['studen/index'])).'</li>';
+                            }
+                            if(Yii::$app->user->identity->auth_status == 'admin'){
+                                echo '<li>'.Html::a('เพิ่มคำนำหน้าชื่อ',Url::to(['titlename/index'])).'</li>';
+                            }
+                            if(Yii::$app->user->identity->auth_status == 'admin'){
+                                echo '<li>'.Html::a('เพิ่มสาขา',Url::to(['major/index'])).'</li>';
+                            }
+                            if(Yii::$app->user->identity->auth_status == 'admin'){
+                                echo '<li>'.Html::a('เพิ่มคณะ',Url::to(['faculty/index'])).'</li>';
+                            }
                             if(Yii::$app->user->identity->auth_status == 'deputy'){
                                 echo '<li>'.Html::a('เพิ่มประเภทกิจกรรม',Url::to(['factype/index'])).'</li>';
                             }

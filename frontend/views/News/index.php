@@ -12,7 +12,7 @@ Yii::setAlias('@demo01', '@web');
 $this->title = 'News';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="news-index">
+<div class="news-index" style="min-height: 1000px;">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

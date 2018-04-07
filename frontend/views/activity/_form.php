@@ -49,7 +49,7 @@ $this->registerJs("
     ", View::POS_END, 'my-options');
 ?>
 
-<div class="activity-form">
+<div class="activity-form" style="min-height: 1000px;">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -70,23 +70,27 @@ $this->registerJs("
         <div class='col-md-6'>
             <div class="form-group">
                 <div class='input-group date' id='banner-start_date'>
-                    <?= $form->field($model,'act_sday')->textInput();
-                    ?>
-                  <span class="input-group-addon">
+                      <?= $form->field($model,'act_eday',[
+            'template' => '{label}<div style="display:table;">{input}<span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
+                  </span></div>'
+        ])->textInput(['style'=>'width:400px']);
+                    ?>
                 </div>
             </div>
         </div>
         <div class='col-md-6'>
             <div class="form-group">
                 <div class='input-group date' id='banner-end_date'>
-                      <?= $form->field($model,'act_eday')->textInput();
-                    ?>
-                  <span class="input-group-addon">
+                  
+                      <?= $form->field($model,'act_eday',[
+            'template' => '{label}<div style="display:table;">{input}<span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-                  </span>
+                  </span></div>'
+        ])->textInput(['style'=>'width:400px']);
+                    ?>
+               
+                
                 </div>
             </div>
         </div>

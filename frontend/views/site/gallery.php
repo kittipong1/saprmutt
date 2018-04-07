@@ -44,7 +44,7 @@ Yii::setAlias('@kmpath', '@web');
           <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="<?=$videos?>"><a href="#video" aria-controls="home" role="tab" data-toggle="tab">คลังวิดีโอ</a></li>
+            <!--   <li role="presentation" class="<?=$videos?>"><a href="#video" aria-controls="home" role="tab" data-toggle="tab">คลังวิดีโอ</a></li> -->
               <li role="presentation" class="<?=$photos?>"><a href="#photo" aria-controls="profile" role="tab" data-toggle="tab">คลังรูปภาพ</a></li>
             </ul>
             <!-- Tab panes -->

@@ -13,7 +13,7 @@ $this->registerJs("
     ", View::POS_END, 'my-options');
 ?>
 
-<div class="news-form">
+<div class="news-form" style="min-height: 1000px;">
 
     <?php $form = ActiveForm::begin(); ?>
 

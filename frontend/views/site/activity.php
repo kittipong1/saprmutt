@@ -2,21 +2,11 @@
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\Faculty;
+use yii\db\query;
 Yii::setAlias('@demo01', '@web');
 ?>
 
-
-
-<style>
-
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-</style>
-</head>
 <body>
 <div id="container">
    <div class="page-banner no-subtitle">
@@ -43,6 +33,13 @@ Yii::setAlias('@demo01', '@web');
                   <li class="active"><a href="#" data-toggle="tab" style="color: #f0ad4e;"><i class="fa fa-newspaper-o"></i>ตารางหน่วยงานผู้จัดกิจกรรม</a></li>
               </ul>
               <div class="tab-content">
+
+                <?php $query = new Query;
+                $query
+                ->select(['faculty.Fac_name', 'COUNT(activity.actitaty_id) As Count'])->from('Faculty')->join('INNER JOIN','activity','activity.fac_id = faculty.Fac_key')->groupBy('faculty.Fac_name')->orderBy(['Fac_name' => 'DESC'])->all(); 
+                $command = $query->createCommand();
+                $data = $command->queryAll();
+    ?>
                       <div class="latest-posts-classic">
 
                         <div class="row">
@@ -55,38 +52,15 @@ Yii::setAlias('@demo01', '@web');
                                       </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-								    <td>คณะวิทยาศาสตร์และเทคโนโลยี</td>
-								    <td style="text-align: center;">1048</td>
-								  	</tr>
-								  	<tr>
-								    <td>มหาวิทยาลัย</td>
-								    <td style="text-align: center;">265</td>
-								  	</tr>
-								  	<tr>
-								    <td>คณะศิลปศาสตร์</td>
-								    <td style="text-align: center;">125</td>
-								  	</tr>
-								  	<tr>
-								    <td>คณะบริหารธุรกิจ</td>
-								    <td style="text-align: center;">112</td>
-								  	</tr>
-								  	<tr>
-								    <td>คณะเทคโนโลยีคหกรรมศาสตร์</td>
-								    <td style="text-align: center;">99</td>
-								  	</tr>
-								  	<tr>
-								    <td>คณะครุศาสตร์อุตสาหกรรม</td>
-								    <td style="text-align: center;">79</td>
-								  	</tr>
-								  	<tr>
-								    <td>วิทยาลัยการแพทย์แผนไทย</td>
-								    <td style="text-align: center;">71</td>
-								  	</tr>
-								  	<tr>
-								    <td>คณะวิศวกรรมศาสตร์</td>
-								    <td style="text-align: center;">64</td>
-								  	</tr>
+                                      <?php 
+                                      foreach ($data as $key => $value) {
+
+                                        echo '<tr><td style="text-align: center;">'.$data[$key]['Fac_name'].'</td>'
+                                            .'<td style="text-align: center;">'.$data[$key]['Count'].'</td></tr>';
+                                      }
+                                       ?>
+                                   
+								  	
                                     </tbody>
                                   </table>
                        
@@ -148,5 +122,3 @@ Yii::setAlias('@demo01', '@web');
 
 
 
-</body>
-</html>

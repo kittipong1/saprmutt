@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="newstype-form">
+<div class="newstype-form" style="min-height: 1000px;">
 
     <?php $form = ActiveForm::begin(); ?>
 

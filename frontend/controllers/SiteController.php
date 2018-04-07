@@ -39,14 +39,14 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup','profile'],
                 'rules' => [
                     [
                         'actions' => ['login','error'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','index'],
+                        'actions' => ['logout','profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -111,6 +111,10 @@ class SiteController extends Controller
     public function actionActivity(){
     
         return $this->render('activity');
+    }
+    public function actionProfile(){
+    
+        return $this->render('profile');
     }
     public function actionEventcalendar(){
     

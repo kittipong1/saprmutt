@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Newstypes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="newstype-index">
+<div class="newstype-index" style="min-height: 1000px;">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

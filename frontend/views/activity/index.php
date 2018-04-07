@@ -12,10 +12,10 @@ use app\models\Factype;
 $this->title = 'Activities';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="activity-index" style="height: 1000px;">
+<div class="activity-index" style="min-height: 1000px;">
 
     <h1><?= Html::encode($this->title) ?></h1>
-<?=Yii::$app->user->identity->auth_status ?>
+        สถานะ :: <?=Yii::$app->user->identity->auth_status ?>
    <!--  <?php  echo $this->render('_search', ['model' => $searchModel]); ?> -->
 
     <p>
