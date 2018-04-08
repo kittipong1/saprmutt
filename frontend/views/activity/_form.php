@@ -70,7 +70,7 @@ $this->registerJs("
         <div class='col-md-6'>
             <div class="form-group">
                 <div class='input-group date' id='banner-start_date'>
-                      <?= $form->field($model,'act_eday',[
+                      <?= $form->field($model,'act_sday',[
             'template' => '{label}<div style="display:table;">{input}<span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span></div>'

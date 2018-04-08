@@ -97,12 +97,12 @@ class ActivityController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $str1 = explode('25', $model->act_term);
-            $actall = Activity::find()->all();
+            $actall = Activity::find()->where(['fac_id'=>$model->fac_id])->all();
             $acta = array();
             foreach ($actall as $key => $value) {
-                $acta[$key] = $value;
+                $acta = $value;
             }
-            $calactid = $acta[0]['act_id'][8]+($acta[0]['act_id'][7]*10)+($acta[0]['act_id'][6]*100);
+            $calactid = $acta['act_id'][8]+($acta['act_id'][7]*10)+($acta['act_id'][6]*100);
 
             if($calactid < 10){
                 $calactidl = '00'.($calactid+1);
@@ -116,7 +116,9 @@ class ActivityController extends Controller
 
             $_act_id = $model->fac_id.$model->typefac_id.$str1[1].$calactidl;
             $model->act_id = $_act_id;
-            $model->id_username = '1';
+            // $model->id_username = 1;
+            $model->id_username = Yii::$app->user->identity->id;
+            
             if($model->save()){
                 $model->save();
             }

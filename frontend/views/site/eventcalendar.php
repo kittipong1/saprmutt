@@ -71,7 +71,9 @@ foreach ($events as $key => $value) {
       
      $sc .= "
        
-      ]
+      ],eventRender: function(event, element) {
+        element.attr('title', event.title);
+    }
     });
 
   });";

@@ -36,11 +36,12 @@ class Activity extends \yii\db\ActiveRecord
     {
         return [
             [['act_id', 'act_name', 'fac_id', 'typefac_id', 'act_term', 'act_sday', 'act_eday', 'status', 'id_username'], 'required'],
-            [['fac_id', 'typefac_id'], 'integer'],
+            [['fac_id', 'typefac_id', 'id_username'], 'integer'],
             [['act_sday', 'act_eday'], 'safe'],
             [['act_comment'], 'string'],
             [['act_id'], 'string', 'max' => 9],
-            [['act_name', 'act_term', 'status', 'id_username'], 'string', 'max' => 255],
+            [[ 'act_term', 'status'], 'string', 'max' => 255],
+            [[ 'act_name'], 'string', 'max' => 350],
         ];
     }
 
