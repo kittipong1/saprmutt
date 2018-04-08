@@ -112,6 +112,18 @@ class SiteController extends Controller
     
         return $this->render('activity');
     }
+    public function actionActivitychart(){
+    
+        return $this->render('activitychart');
+    }
+    public function actionChartofactivity(){
+    
+        return $this->render('chartofactivity');
+    }
+    public function actionChartofstudent(){
+    
+        return $this->render('chartofstudent');
+    }
     public function actionProfile(){
     
         return $this->render('profile');

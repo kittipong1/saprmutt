@@ -70,7 +70,7 @@ Student Activities of RMUTT
                     <?= Html::a('หน่วยงานผู้จัดกิจกรรม',Url::to(['site/activity'])); ?>
                     </li>
                     <li>
-                    <?= Html::a('รายงานผล',Url::to(['site/publicize'])); ?>
+                    <?= Html::a('รายงานผล',Url::to(['site/activitychart'])); ?>
                     </li>
                      <li>
                      <?= Html::a('ภาพกิจกรรม',Url::to(['site/gallery'.'/?photo=1'])); ?>
