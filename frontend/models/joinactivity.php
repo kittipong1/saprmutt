@@ -16,6 +16,7 @@ class joinactivity extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $csv_path;
     public static function tableName()
     {
         return 'joinactivity';
@@ -28,7 +29,9 @@ class joinactivity extends \yii\db\ActiveRecord
     {
         return [
             [['studennumber', 'id_actitaty'], 'required'],
-            [['studennumber', 'id_actitaty'], 'integer'],
+            [['studennumber'], 'string', 'max' => 255],
+            [['id_actitaty'], 'string', 'max' => 9],
+            [['csv_path'],'file','skipOnEmpty'=>true,'on' => 'update','extensions'=>'csv'],
         ];
     }
 
@@ -41,6 +44,7 @@ class joinactivity extends \yii\db\ActiveRecord
             'id_joinactivity' => 'Id Joinactivity',
             'studennumber' => 'รหัสนักศึกษา',
             'id_actitaty' => 'รหัสกิจกรรม',
+            'csv_path'=>'file *.csv',
         ];
     }
 }

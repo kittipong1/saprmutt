@@ -86,7 +86,9 @@ Student Activities of RMUTT
                         echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
                         echo'<li>'.Html::a('เมนู <i class="fa fa-caret-down"></i>','#').'<ul class="dropdown">
+                            <li>'.Html::a('ข้อมูลส่วนตัว',Url::to(['site/profile'])).'</li>
                             <li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li>';
+               
                             if(Yii::$app->user->identity->auth_status == 'admin'){
                                 echo '<li>'.Html::a('เพิ่มรายชื่อนักศึกษา',Url::to(['studen/index'])).'</li>';
                             }
@@ -114,7 +116,7 @@ Student Activities of RMUTT
                                 echo '<li>'.Html::a('เพิ่มประเภทข่าวสาร',Url::to(['newstype/index'])).'</li>';
                             }
                             if(Yii::$app->user->identity->auth_status == 'deputy'){
-                                echo '<li>'.Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม',Url::to(['news/mynews']).'?NewsSearch%5Buser_id%5D='.Yii::$app->user->identity->id).'</li>';
+                                echo '<li>'.Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม',Url::to(['joinactivity/index']).'?NewsSearch%5Buser_id%5D='.Yii::$app->user->identity->id).'</li>';
                             }
 
 

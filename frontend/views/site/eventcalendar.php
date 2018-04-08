@@ -3,6 +3,7 @@ use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\web\view;
+use app\models\Activity;
 Yii::setAlias('@kmpath', '@web');
 ?>
 
@@ -45,7 +46,10 @@ Yii::setAlias('@kmpath', '@web');
 
 <?php
 
-$this->registerJs("
+$events = Activity::find()->all();
+$eventsall = array();
+
+$sc = "
     $(document).ready(function() {
 
     $('#calendar').fullCalendar({
@@ -54,69 +58,26 @@ $this->registerJs("
         center: 'title',
         right: 'month,agendaWeek,agendaDay,listWeek'
       },
-      defaultDate: '2018-03-30',
+
       navLinks: false, // can click day/week names to navigate views
       editable: false,
       eventLimit: true, 
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2018-03-01',
-        },
-        {
-          title: 'Long Event',
-          start: '2018-03-07',
-          end: '2018-03-10'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2018-03-09T16:00:00'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2018-03-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2018-03-11',
-          end: '2018-03-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2018-03-12T10:30:00',
-          end: '2018-03-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2018-03-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2018-03-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2018-03-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2018-03-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2018-03-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2018-03-28'
-        }
+      events: [";
+foreach ($events as $key => $value) {
+  $sc .= "{ title: '".$value->act_name."',  start: '".$value->act_sday."', end: '".$value->act_eday."'},";
+  
+}
+
+      
+     $sc .= "
+       
       ]
     });
 
-  });", \yii\web\View::POS_READY);
+  });";
+
+
+$this->registerJs($sc, \yii\web\View::POS_READY);
 
 ?>
 

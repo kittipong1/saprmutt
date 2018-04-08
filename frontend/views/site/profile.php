@@ -44,8 +44,7 @@ use app\models\profile
      	ชื่อ 
   		<?php 
   		$userid = Yii::$app->user->identity->id ;
-  		if()
-
+      
   		 ?>
      	<?=Yii::$app->user->identity->username?>
      </div>
@@ -75,7 +74,7 @@ use app\models\profile
                         echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
                      echo'<li>'.Html::a('ชื่อผู้ใช้ : '.Yii::$app->user->identity->username,'#').'</li>';
-                        echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว','site/profileedit').'
+                        echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว',Url::to(['site/profileedit'])).'
                             <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['site/profile'])).'</li>';
                         echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['site/profile'])).'</li>';
                             if(Yii::$app->user->identity->auth_status == 'admin'){
