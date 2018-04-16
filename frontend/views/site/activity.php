@@ -3,12 +3,12 @@ use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use app\models\Faculty;
-use yii\db\query;
+
 Yii::setAlias('@demo01', '@web');
 ?>
 
 <body>
-<div id="container">
+<div id="container" style="min-height: 850px">
    <div class="page-banner no-subtitle">
       <div class="container">
         <div class="row">
@@ -33,30 +33,24 @@ Yii::setAlias('@demo01', '@web');
                   <li class="active"><a href="#" data-toggle="tab" style="color: #f0ad4e;"><i class="fa fa-newspaper-o"></i>ตารางหน่วยงานผู้จัดกิจกรรม</a></li>
               </ul>
               <div class="tab-content">
-
-                <?php $query = new Query;
-                $query
-                ->select(['faculty.Fac_name', 'COUNT(activity.actitaty_id) As Count'])->from('Faculty')->join('INNER JOIN','activity','activity.fac_id = faculty.Fac_key')->groupBy('faculty.Fac_name')->orderBy(['Fac_name' => 'DESC'])->all(); 
-                $command = $query->createCommand();
-                $data = $command->queryAll();
-    ?>
-                      <div class="latest-posts-classic">
-
+                 <div class="latest-posts-classic">
                         <div class="row">
                         <div class="col-sm-12" style="background-color:lavender;">
                                   <table class="table table-hover">
                                     <thead>
                                       <tr>
                                         <th style="text-align: center;">คณะ/วิทยาลัย</th>
-                                        <th style="text-align: center;width: 40%">จำนวนกิจกรรม</th>
+                                        <th style="text-align: center;width: 30%">จำนวนกิจกรรม</th>
+                                        <th style="text-align: center;width: 20%"></th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <?php 
                                       foreach ($data as $key => $value) {
 
-                                        echo '<tr><td style="text-align: center;">'.$data[$key]['Fac_name'].'</td>'
-                                            .'<td style="text-align: center;">'.$data[$key]['Count'].'</td></tr>';
+                                        echo '<tr><td style="text-align: center;">'.$value['Fac_name'].'</td>'
+                                            .'<td style="text-align: center;">'.$value['Count'].'</td>
+                                            <td style="text-align: center;">'.Html::a('คลิก',Url::to(['site/viewactivity'.'/?fac_id='.$value['Fac_key']])).'</td></tr>';
                                       }
                                        ?>
                                    
@@ -91,15 +85,15 @@ Yii::setAlias('@demo01', '@web');
                 <div class="tab-pane fade in active">
                   <ul>
 
-                    <?php  
-                      for ($x = 0; $x <= 4; $x++) {
+                   <?php  
+                      for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
                         <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
-                        <h5><a href="#">ชื่อนศ...</a></h5>
-                        <span><i class="fa fa-trophy"></i> : 123 กิจกรรม</span>
+                        <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
+                        <span><i class="fa fa-trophy"></i> : '.$topactivitystudent[$x]['counts'].' กิจกรรม</span>
                       </div>
                       <div class="clearfix"></div>
                     </li>';

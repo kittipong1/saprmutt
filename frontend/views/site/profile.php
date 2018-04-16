@@ -96,8 +96,10 @@ Yii::setAlias('@demo01', '@web');
                     }else{ 
                      echo'<li>'.Html::a('ชื่อผู้ใช้ : '.Yii::$app->user->identity->username,'#').'</li>';
                         echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว',Url::to(['site/profileedit'])).'
-                            <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['site/profile'])).'</li>';
-                        echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['site/profile'])).'</li>';
+                            <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['checkstudentbyteacher/index'])).'</li>';
+                             if(Yii::$app->user->identity->auth_status !== 'admin'){
+                        echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['viewjoinbyme/index'])).'</li>';
+                      }
                             if(Yii::$app->user->identity->auth_status == 'admin'){
                                 echo '<li>'.Html::a('เพิ่มรายชื่อนักศึกษา',Url::to(['studen/index'])).'</li>';
                             }

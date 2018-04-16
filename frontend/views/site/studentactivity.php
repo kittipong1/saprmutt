@@ -161,5 +161,7 @@ use app\models\Faculty;
 	</tbody>
 
 </table>
+<h3>เข้าร่วมกิจกรรม &nbsp;&nbsp;&nbsp; <?=$countallactivity?>  กิจกรรม  ,  สมาชิกชมรม &nbsp;&nbsp;&nbsp; <?=$countactivity4?> ชมรม</h3>
+<h2> <?=$status?></h2>
 	<?php } ?>
 </div>

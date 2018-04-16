@@ -2,7 +2,7 @@
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
-Yii::setAlias('@kmpath', '@web');
+Yii::setAlias('@demo01', '@web');
 ?><!doctype html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><html lang="en" class="no-js"> <![endif]-->
@@ -68,7 +68,7 @@ Yii::setAlias('@kmpath', '@web');
                                 <div class="team-member">
                                   <!-- Memebr Photo, Name & Position -->
                                   <div class="member-photo">
-                                    <video src=" '.Yii::getAlias('@kmpath').'/uploads/media/'.$vdo[$key]->path.'" width="100%" poster="'.Yii::getAlias('@kmpath').'/images/img-vdo.png" controls style="height: 185px; " onplaying="vdoviews('.$vdo[$key]->vdo_id.')" ></video>
+                                    <video src=" '.Yii::getAlias('@demo01').'/uploads/media/'.$vdo[$key]->path.'" width="100%" poster="'.Yii::getAlias('@demo01').'/images/img-vdo.png" controls style="height: 185px; " onplaying="vdoviews('.$vdo[$key]->vdo_id.')" ></video>
                                   </div>
                                   <!-- Memebr Words -->
                                   <div class="member-info">
@@ -119,7 +119,7 @@ Yii::setAlias('@kmpath', '@web');
                                 <div class="team-member">
                                   <!-- Memebr Photo, Name & Position -->
                                   <div class="member-photo">
-                                    <img alt="" src="'.Yii::getAlias('@kmpath').'/images/img-gallery.png" />
+                                    <img alt="" src="'.Yii::getAlias('@demo01').'/images/img-gallery.png" />
                                   </div>
                                   <!-- Memebr Words -->
                                   <div class="member-info">
@@ -168,7 +168,7 @@ Yii::setAlias('@kmpath', '@web');
 
               <!-- Nav Tabs -->
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#" data-toggle="tab"><i class="fa fa-star"></i>กิจกรรมยอดนิยม</a></li>
+                <li class="active" style="width: 264px;"><a href="#" data-toggle="tab"><i class="fa fa-star"></i>นักศึกษาที่ ทำกิจกรรมมากที่สุด</a></li>
                 <!-- <span class="pull-right" style="padding: 8px 0px;"><a href="#" class="btn btn-warning btn-sm" title="ดูทั้งหมด"><i class="fa fa-plus"></i></a></span> -->
               </ul>
 
@@ -179,15 +179,14 @@ Yii::setAlias('@kmpath', '@web');
                   <ul>
 
                     <?php  
-                      for ($x = 0; $x <= 4; $x++) {
+                      for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                        <a href="#"><img src=" '.Yii::getAlias('@kmpath').'/images/img-gallery-1.png" alt="" /></a>
+                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
-                        <h5><a href="#">ชื่อกิจกรรม...</a></h5>
-                        <span><i class="fa fa-calendar"></i> : 29/08/2560</span> <br>
-                        <span><i class="fa fa-eye"></i> : 123 ครั้ง</span>
+                        <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
+                        <span><i class="fa fa-trophy"></i> : '.$topactivitystudent[$x]['counts'].' กิจกรรม</span>
                       </div>
                       <div class="clearfix"></div>
                     </li>';
@@ -198,10 +197,10 @@ Yii::setAlias('@kmpath', '@web');
                 </div>
               </div>
               <!-- End Tab Panels -->
+             
             </div>
-
-            <!-- Tags Widget -->
-            
+           
+          
           </div>
           <!--End sidebar-->
         </div>
@@ -225,7 +224,7 @@ Yii::setAlias('@kmpath', '@web');
    {
       type: "POST",
       dataType: "json",
-      url: "<?= Yii::getAlias('@kmpath').'/index.php/site/viewvdoupdate'?>",
+      url: "<?= Yii::getAlias('@demo01').'/index.php/site/viewvdoupdate'?>",
       data: { Data: id },
       success: function(data) 
       { 

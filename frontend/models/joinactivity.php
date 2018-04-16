@@ -52,4 +52,8 @@ class joinactivity extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Activity::className(), ['act_id' => 'id_actitaty']);
     }
+    public function getStudent()
+    {
+        return $this->hasOne(Studen::className(), ['Stu_id' => 'studennumber']);
+    }
 }

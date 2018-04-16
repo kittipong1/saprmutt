@@ -130,22 +130,12 @@ $this->registerJs($sc, \yii\web\View::POS_READY);
                   <li class="active"><a href="#" data-toggle="tab" style="color: #f0ad4e;"><i class="fa fa-newspaper-o"></i>สถิติจำนวนกิจกรรมแบ่งตาม หน่วยงานผู้จัดกิจกรรม</a></li>
               </ul>
               <div class="tab-content">
-                     <table style="width: 100%">
-                     	<thead>
-                     		<tr>
-                     			<th> </th>
-                     			<th> </th>
-                     		</tr>
-                     	</thead>
-                     	<tbody>
-                     		<tr>
-                     			<td><canvas id="canvas"></canvas></td>
-                     			<td><canvas id="chart-area"></canvas></td>
-                     		</tr>
-                     	</tbody>
-                     </table>
-						
-						
+                <div class="col-md-6">
+                  <canvas id="canvas"></canvas>
+                </div>
+                <div class="col-md-6">
+                  <canvas id="chart-area"></canvas>
+                </div>
 					</div>
 			
 					

@@ -7,6 +7,7 @@ use app\models\Joinactivity;
 use app\models\Titlename;
 use app\models\Faculty;
 use app\models\Major;
+use app\models\Information;
 /**
  * This is the model class for table "studen".
  *
@@ -92,5 +93,8 @@ class Studen extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Major::className(), ['major_id' => 'major_id']);
     }
-  
+    public function getTeacher()
+    {
+        return $this->hasOne(Information::className(), ['information_id' => 'teacher_id']);
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
+use Yii;use yii\helpers\Url;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -18,6 +18,7 @@ use app\models\album;
 use app\models\image;
 use app\models\activity;
 use app\models\Vdo;
+use app\models\FacType;
 use app\models\NewsType;
 use app\models\joinactivity;
 use yii\data\ActiveDataProvider;
@@ -30,7 +31,7 @@ use app\models\information;
 use yii\web\UploadedFile;
 use backend\models\User;
 use yii\web\NotFoundHttpException;
-
+use yii\db\query;
 /**
  * Site controller
  */
@@ -100,26 +101,58 @@ class SiteController extends Controller
             $a = Faculty::findone(['Faculty_id'=>$value->fac_id]); 
             $news[$key]['fac_id'] = $a->Fac_name ;
         }
-        $albumall = album::find()->all();
-        $album = array();
-        foreach ($albumall as $key => $value) {
-            $album[$key] = $value;
-        }
+        $activity1 = new Query;
+        $activity1->select(['*'])->from('activity')->where('datediff(NOW(),act_sday)>=0')->all();
+        $command = $activity1->createCommand();
+        $activity1all = $command->queryAll();
+        $activity2 = new Query;
+        $activity2->select(['*'])->from('activity')->where('datediff(NOW(),act_sday)<=0')->all();
+        $command = $activity2->createCommand();
+        $activity2all = $command->queryAll();
         $banner = Banner::find()->where('ban_id')->all();
         $banners = array();
         foreach ($banner as $key => $value) {
             $banners[$key] = $value;
         }
+        $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
         return $this->render('index',[
                'news'=>$news,
-               'album'=>$album,
+               'activity1'=>$activity1all,
+               'activity2'=>$activity2all,
                'banners'=>$banners,
+               'topactivitystudent'=>$topactivitystudent,
             ]);
             
     }
     public function actionActivity(){
-    
-        return $this->render('activity');
+     $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
+    $query = new Query;
+                $query
+                ->select(['faculty.Fac_name', 'COUNT(activity.actitaty_id) As Count','faculty.Fac_key'])->from('Faculty')->join('INNER JOIN','activity','activity.fac_id = faculty.Fac_key')->groupBy('faculty.Fac_name')->orderBy(['Fac_name' => SORT_DESC])->all(); 
+                $command = $query->createCommand();
+                $data = $command->queryAll();
+
+        return $this->render('activity',['data'=>$data,'topactivitystudent'=>$topactivitystudent]);
+    }
+    public function actionViewactivity(){
+    if(isset($_GET['fac_id'])) {
+        $fac_id =  $_GET['fac_id'];
+        $data = activity::find()->where(['fac_id'=>$fac_id])->all();
+        foreach ($data as $key => $value) {
+             $typename[$key] = FacType::find(['id_type'=>$value->typefac_id])->one();
+             $join[$key] = joinactivity::find()->where(['id_actitaty'=>$value->act_id])->count();
+        }
+       
+    } 
+        return $this->render('viewactivity',['data'=>$data,'typename'=>$typename,'join'=>$join]);
     }
     public function actionActivitychart(){
     
@@ -223,13 +256,29 @@ class SiteController extends Controller
     if(Yii::$app->request->post()){
         $student_id = $_POST['student_id'];
         $student = Studen::find()->where(['Stu_id'=>$student_id])->with('faculty')->with('major')->with('title')->one();
+        if(!empty($student)){
         $activity1 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','00%',false])->with('activity')->all();
         $activity2 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty',$student->faculty->Fac_key.'%',false])->with('activity')->all();
         $activity3 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','20%',false])->with('activity')->all();
         $activity4 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','21%',false])->with('activity')->all();
-        
- 
-       return $this->render('studentactivity',['student'=>$student,'activity'=>$activity1,'activity2'=>$activity2,'activity3'=>$activity3,'activity4'=>$activity4]);
+        $countallactivity = count($activity3)+count($activity2)+count($activity1);
+        $countactivity4 = count($activity4);
+        if(count($activity1) > 5 && count($activity2) > 3 && count($activity3) > 1 && count($activity4) > 0){
+           $status ='<font color="green">นักศึกษาเข้าร่วมกิจกรรมมหาวิทยาลัยฯ ครบตามที่กำหนด</font>';
+
+        }else{
+            $status ='<font color="red"> นักศึกษาเข้าร่วมกิจกรรมมหาวิทยาลัยฯ ยังไม่ครบตามที่กำหนด</font>';
+
+        }
+            
+       return $this->render('studentactivity',['student'=>$student,'activity'=>$activity1,'activity2'=>$activity2,'activity3'=>$activity3,'activity4'=>$activity4,'countallactivity'=>$countallactivity,'countactivity4'=>$countactivity4,'status'=>$status]);
+        }else {
+            echo '<script>
+                alert("ไม่มีนักศึกษาในรหัสนักศึกษาที่กรอก");
+    setTimeout(function(){  window.location.assign("'.Url::to(['site/index']).'")}, 10);
+            </script>';
+             exit();
+        }
     }    
     else {
         return $this->render('studentactivity');
@@ -261,7 +310,11 @@ class SiteController extends Controller
             exit();
         }
 
-
+         $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
         //IMAGE DATA/////////////////////////////////
         if(empty($id)){$id = 1;}
         if($photo==1){$photos = 'active';}else {$photos = '';}
@@ -291,6 +344,7 @@ class SiteController extends Controller
                 'countvdo'=>$b,
                 'photos'=>$photos,
                 'videos'=>$videos,
+                'topactivitystudent'=>$topactivitystudent,
             ]);
     }
      public function actionNews()
@@ -315,7 +369,11 @@ class SiteController extends Controller
     }
      public function actionPhoto($id)
     {
-
+           $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
         $album = album::find()->where(['album_id'=>$id])->one();
         $album->album_view ++;
         $album->save();
@@ -329,6 +387,7 @@ class SiteController extends Controller
        return $this->render('photo',[
             'img'=>$img,
             'album'=>$album,
+            'topactivitystudent'=>$topactivitystudent,
             ]);
     }
 
@@ -345,6 +404,8 @@ class SiteController extends Controller
         $a = count($countnews);
         foreach ($newsall as $key => $value) {
             $news[$key] = $value;
+            $a2 = Faculty::findone(['Faculty_id'=>$value->fac_id]); 
+            $news[$key]['fac_id'] = $a2->Fac_name ;
         }
 
         return $this->render('publicize',[

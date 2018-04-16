@@ -3,7 +3,7 @@ use yii\helpers\Html;
 Yii::setAlias('@demo01', '@web');
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
-
+use app\models\faculty;
 
 ?>
 <!doctype html>
@@ -102,27 +102,22 @@ use yii\helpers\Url;
                                       </tr>
                                     </thead>
                                     <tbody>
+                                    <?php if(isset($activity1)){
+
+                                          foreach ($activity1 as $key => $value) {
+                                            $k = $key+1 ;
+                                          ?>
                                       <tr>
-                                        <td>1</td>
-                                        <td>admin test</td>
-                                        <td>คณะวิศวกรรมศาสตร์</td>
-                                        <td>29/03/2561 - 01/04/2561</td>
+                                        <td><?=$k?></td>
+                                        <td><?=$value["act_name"]?></td>
+                                        <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
+                                        echo $faculty->Fac_name;
+                                        ?></td>
+                                        <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
                                       </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>จิตอาสาช่วยปฏิบัติงานจัดเตรียมสถานที่สอบประเมินสมรรถนะนักศึกษาหลักสูตรคหกรรมศาสตร์บัณฑิต</td>
-                                        <td>คณะวิศวกรรมศาสตร์</td>
-                                        <td>27/03/2561</td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>จิตอาสางานโครงการนักศึกษารุ่นใหม่ใส่ใจธรรมะ</td>
-                                        <td>คณะศิลปศาสตร์</td>
-                                        <td>16/12/2561</td>
-                                      </tr>
+                                    <?php  }} ?>
                                     </tbody>
                                   </table>
-                       
                         </div>
                         </div>
                         </div>
@@ -142,7 +137,7 @@ use yii\helpers\Url;
 
                         <div class="row">
                         <div class="col-sm-12" style="background-color:lavender;">
-                                  <table class="table table-hover">
+                            <table class="table table-hover">
                                     <thead>
                                       <tr>
                                         <th style="text-align: center;">ลำดับ</th>
@@ -152,27 +147,22 @@ use yii\helpers\Url;
                                       </tr>
                                     </thead>
                                     <tbody>
+                                    <?php if(isset($activity2)){
+
+                                          foreach ($activity2 as $key => $value) {
+                                            $k = $key+1 ;
+                                          ?>
                                       <tr>
-                                        <td>1</td>
-                                        <td>admin test</td>
-                                        <td>คณะวิศวกรรมศาสตร์</td>
-                                        <td>29/03/2561 - 01/04/2561</td>
+                                        <td><?=$k?></td>
+                                        <td><?=$value["act_name"]?></td>
+                                        <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
+                                        echo $faculty->Fac_name;
+                                        ?></td>
+                                        <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
                                       </tr>
-                                      <tr>
-                                        <td>2</td>
-                                        <td>จิตอาสาช่วยปฏิบัติงานจัดเตรียมสถานที่สอบประเมินสมรรถนะนักศึกษาหลักสูตรคหกรรมศาสตร์บัณฑิต</td>
-                                        <td>คณะวิศวกรรมศาสตร์</td>
-                                        <td>27/03/2561</td>
-                                      </tr>
-                                      <tr>
-                                        <td>3</td>
-                                        <td>จิตอาสางานโครงการนักศึกษารุ่นใหม่ใส่ใจธรรมะ</td>
-                                        <td>คณะศิลปศาสตร์</td>
-                                        <td>16/12/2561</td>
-                                      </tr>
+                                    <?php  }} ?>
                                     </tbody>
                                   </table>
-                       
                         </div>
                         </div>
                         </div>
@@ -365,14 +355,14 @@ use yii\helpers\Url;
                   <ul>
 
                     <?php  
-                      for ($x = 0; $x <= 4; $x++) {
+                      for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
                         <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
-                        <h5><a href="#">ชื่อนศ...</a></h5>
-                        <span><i class="fa fa-trophy"></i> : 123 กิจกรรม</span>
+                        <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
+                        <span><i class="fa fa-trophy"></i> : '.$topactivitystudent[$x]['counts'].' กิจกรรม</span>
                       </div>
                       <div class="clearfix"></div>
                     </li>';

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\Faculty;
+use app\models\FacType;
 /**
  * This is the model class for table "activity".
  *
@@ -68,5 +69,9 @@ class Activity extends \yii\db\ActiveRecord
     public function getFaculty()
     {
         return $this->hasOne(Faculty::className(), ['Fac_key' => 'fac_id']);
+    }
+    public function getTypefac()
+    {
+        return $this->hasOne(FacType::className(), ['id_type' => 'typefac_id']);
     }
 }

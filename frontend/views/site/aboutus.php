@@ -274,7 +274,7 @@ use yii\helpers\Html;
             </div> -->
 
             <!-- Categories Widget -->
-            <div class="widget widget-categories">
+            <!-- <div class="widget widget-categories">
               <h4>Categories <span class="head-line"></span></h4>
               <ul>
                 <li>
@@ -290,7 +290,7 @@ use yii\helpers\Html;
                   <a href="#">Graphic</a>
                 </li>
               </ul>
-            </div>
+            </div> -->
 
             <!-- Popular Posts widget -->
             <!--<div class="widget widget-popular-posts">

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\joinactivity;
+use app\models\Joinactivity;
 
 /**
- * JoinactivitySearch represents the model behind the search form about `app\models\joinactivity`.
+ * ViewjoinbymeSearch represents the model behind the search form about `app\models\Joinactivity`.
  */
-class JoinactivitySearch extends joinactivity
+class ViewjoinbymeSearch extends Joinactivity
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class JoinactivitySearch extends joinactivity
     public function rules()
     {
         return [
-            [['id_joinactivity', 'id_actitaty'], 'integer'],
-            [['studennumber'], 'string'],
+            [['id_joinactivity'], 'integer'],
+            [['studennumber', 'id_actitaty'], 'safe'],
         ];
     }
 
@@ -41,8 +41,8 @@ class JoinactivitySearch extends joinactivity
      */
     public function search($params)
     {
-        $query = joinactivity::find()->with('student')->orderBy(['id_joinactivity'=>SORT_DESC]);
-
+        $query = Joinactivity::find()->joinWith('activity','joinactivity.id_actitaty=activity.act_id')->where(['activity.id_username'=>Yii::$app->user->identity->id]);
+        // $query->and(['activity.id_username'=>1]);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -60,10 +60,10 @@ class JoinactivitySearch extends joinactivity
         // grid filtering conditions
         $query->andFilterWhere([
             'id_joinactivity' => $this->id_joinactivity,
-            'studennumber' => $this->studennumber,
-            'id_actitaty' => $this->id_actitaty,
-            'student.Stu_name_th' => $this->student['Stu_name_th'],
         ]);
+
+        $query->andFilterWhere(['like', 'studennumber', $this->studennumber])
+            ->andFilterWhere(['like', 'id_actitaty', $this->id_actitaty]);
 
         return $dataProvider;
     }
