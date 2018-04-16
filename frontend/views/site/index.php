@@ -383,8 +383,18 @@ use yii\helpers\Url;
                 </div>
               </div>
               <!-- End Tab Panels -->
+              <form action="<?=Url::to(['site/studentactivity']) ?>" method="POST" role="form">
+                <legend>ค้นหาข้อมูลกิจกรรมนักศึกษา</legend>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="student_id" name="student_id" placeholder="รหัสนักศึกษา (ไม่มีขีด)">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">ค้นหา</button>
+                  </span>
+                </div>
+              </div>
+              </form>
             </div>
-
+           
           
           </div>
           <!--End sidebar-->

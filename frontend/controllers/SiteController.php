@@ -16,12 +16,21 @@ use yii\helpers\ArrayHelper;
 use app\models\News;
 use app\models\album;
 use app\models\image;
+use app\models\activity;
 use app\models\Vdo;
 use app\models\NewsType;
+use app\models\joinactivity;
 use yii\data\ActiveDataProvider;
 use app\models\About;
 use app\models\Banner;
 use app\models\Faculty;
+use app\models\profile;
+use app\models\studen;
+use app\models\information;
+use yii\web\UploadedFile;
+use backend\models\User;
+use yii\web\NotFoundHttpException;
+
 /**
  * Site controller
  */
@@ -39,14 +48,14 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile'],
+                'only' => ['logout', 'signup','profile','profileedit'],
                 'rules' => [
                     [
                         'actions' => ['login','error'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout','profile'],
+                        'actions' => ['logout','profile','profileedit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -124,13 +133,108 @@ class SiteController extends Controller
     
         return $this->render('chartofstudent');
     }
+    public function actionProfileedit(){
+
+        $userid = Yii::$app->user->identity->id ;
+        $profile = information::findOne(['user_id'=>$userid]);
+        if(is_null($profile)){
+            $model = new information;
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->user_id = $userid;
+
+            $file = UploadedFile::getInstance($model,'avatar_path');
+            if($file->size!=0){
+
+                $model->avatar = $file->basename.'.'.$file->extension;
+                $file->saveAs('./uploads/information/'.$file->basename.'.'.$file->extension);
+            }
+            if($model->save()){
+                $model->save();
+            }
+             
+            return $this->redirect(['site/profile']);
+        }
+        }else {
+             $model = information::findOne(['user_id'=>$userid]);
+
+
+             if ($model->load(Yii::$app->request->post())) {
+                $file = UploadedFile::getInstance($model,'avatar_path');
+            if($file->size!=0){
+
+                $model->avatar = $file->basename.'.'.$file->extension;
+                $file->saveAs('./uploads/information/'.$file->basename.'.'.$file->extension);
+            }
+            if($model->save()){
+            $model->save();
+            }
+            return $this->redirect(['site/profile']);
+        }
+           
+    }
+
+        return $this->render('profileedit',['model' => $model,
+    ]);
+    }
     public function actionProfile(){
-    
-        return $this->render('profile');
+
+
+        $userid = Yii::$app->user->identity->id ;
+        $profile = information::findOne(['user_id'=>$userid]);
+
+
+
+        return $this->render('profile',[
+            'profile'=>$profile,
+        ]);
+    }
+    public function actionEditpassword(){
+        $userid = Yii::$app->user->identity->id ;
+        $model = User::findOne(['id'=>$userid]);
+        if ($model->load(Yii::$app->request->post())){
+            
+            $validateOldPass = Yii::$app->security->validatePassword($model->old_password,$model->password_hash);
+  
+            if($validateOldPass=='1'){
+                if($model->new_password == $model->confirm_password) {
+                $hashpassword = Yii::$app->security->generatePasswordHash($model->new_password);
+                $model->password_hash = $hashpassword;
+                if($model->save()) {
+                $model->save();
+                }
+            }else {
+                throw new NotFoundHttpException('confirm password is not true.');
+            }
+            }
+            else {
+                throw new NotFoundHttpException('Old password is wrong.');
+            }
+            return $this->redirect(['site/profile']);
+        } else {
+           return $this->render('editpassword',['model'=>$model]);
+        }        
     }
     public function actionEventcalendar(){
     
         return $this->render('eventcalendar');
+    }
+    public function actionStudentactivity(){
+    if(Yii::$app->request->post()){
+        $student_id = $_POST['student_id'];
+        $student = Studen::find()->where(['Stu_id'=>$student_id])->with('faculty')->with('major')->with('title')->one();
+        $activity1 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','00%',false])->with('activity')->all();
+        $activity2 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty',$student->faculty->Fac_key.'%',false])->with('activity')->all();
+        $activity3 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','20%',false])->with('activity')->all();
+        $activity4 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','21%',false])->with('activity')->all();
+        
+ 
+       return $this->render('studentactivity',['student'=>$student,'activity'=>$activity1,'activity2'=>$activity2,'activity3'=>$activity3,'activity4'=>$activity4]);
+    }    
+    else {
+        return $this->render('studentactivity');
+    }
+    
     }
     public function actionAboutus()
     {

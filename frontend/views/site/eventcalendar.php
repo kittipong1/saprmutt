@@ -47,8 +47,6 @@ Yii::setAlias('@kmpath', '@web');
 <?php
 
 $events = Activity::find()->all();
-$eventsall = array();
-
 $sc = "
     $(document).ready(function() {
 
@@ -65,10 +63,7 @@ $sc = "
       events: [";
 foreach ($events as $key => $value) {
   $sc .= "{ title: '".$value->act_name."',  start: '".$value->act_sday."', end: '".$value->act_eday."'},";
-  
 }
-
-      
      $sc .= "
        
       ],eventRender: function(event, element) {

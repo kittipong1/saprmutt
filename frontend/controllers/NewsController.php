@@ -133,8 +133,15 @@ class NewsController extends Controller
 
         $model = $this->findModel($id);
         if($model->user_id == Yii::$app->user->identity->id){
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->news_id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+            if($model->password == $model->confirm_password){
+            $hashpassword = Yii::$app->security->generatePasswordHash($model->password);
+            $model->password_hash = $hashpassword;
+            }
+            if($model->save()){
+               $model->save(); 
+            }
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

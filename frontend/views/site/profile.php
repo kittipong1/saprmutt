@@ -2,8 +2,10 @@
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\faculty;
+use app\models\major;
 Yii::setAlias('@demo01', '@web');
-use app\models\profile
+
 ?>
 
 <body>
@@ -28,30 +30,49 @@ use app\models\profile
      <div class="col-md-4">
  
      		<a href="#" class="thumbnail" style="text-align: center;">
+          <?php 
+
+          if(is_null($profile['avatar'])){ ?>
      			<img data-src="#" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu8BWTAQiujkB8jhc9Maq4QVrxSM39HNcpLAoyuTgma1SjH-SdkQ" style="border-radius: 20%;">
+          <?php }else{ ?>
+          <img data-src="#" src="<?=Yii::getAlias('@demo01').'/uploads/information/'.$profile->avatar?>" style="border-radius: 20%;">
+          <?php } ?>
      		<?=Yii::$app->user->identity->username ?>
      		</a>
      		<div>
-     		<a href="#" >แก้ไขรูป Avatar</a>
+     		<a href="<?=Url::to(['site/profileedit']) ?>" >แก้ไขรูป Avatar</a>
    			<br><br>
-     		<a href="#" >แก้ไข Password</a>
+     		<a href="<?=Url::to(['site/editpassword'])?>" >แก้ไข Password</a>
      		</div>
      		
      	</div>
 
      <div class="col-md-8">
-     	<h1>ข้อมูลส่วนตัว</h1>
-     	ชื่อ 
+     	<h1 style="margin-top:10px">ข้อมูลส่วนตัว</h1>
+
   		<?php 
-  		$userid = Yii::$app->user->identity->id ;
+  		
       
+      if(is_null($profile)){
+        echo '<br><h3 style="color:red;">* กรุณากรอกข้อมูลส่วนตัว *  '.Html::a('>> Click <<',Url::to(['site/profileedit'])).'</h3> <br>' ;
+      }else{
+
   		 ?>
-     	<?=Yii::$app->user->identity->username?>
+       <p>ชื่อภาษาอังกฤษ : <?=$profile->name_en?> <?=$profile->lastname_en?></p>
+       <p>ชื่อภาษาไทย : <?=$profile->name_th?> <?=$profile->lastname_th?></p>
+       <p>วันเกิด : <?=$profile->birht_day?></p>
+       <p>ที่อยู่ : <?=$profile->Add?></p>
+
+       <p>Email : <?=$profile->mail?></p>
+       <p>เบอร์โทร : <?=$profile->phone?></p>
+       <p>คณะ : <?php $a = faculty::findone(['Faculty_id'=>$profile->Fac_id]); echo $a->Fac_name?> </p>
+       <p>สาขา : <?php $b = major::findone(['major_id'=>$profile->major_id]); echo $b->major_name?></p>
+       <?php } ?>
      </div>
     </div>
 
     </div>
-     <!--Sidebar-->
+     <!--Sidebar menu-->
           <div class="col-md-3 sidebar right-sidebar">
 
             <!-- Popular Posts widget -->
@@ -93,8 +114,6 @@ use app\models\profile
           <!--End sidebar-->
 </div>
 
-
-<br><br><br>
 
 
 

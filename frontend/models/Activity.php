@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Faculty;
 /**
  * This is the model class for table "activity".
  *
@@ -63,5 +63,10 @@ class Activity extends \yii\db\ActiveRecord
             'status' => 'สถานะกิจกรรม',
             'id_username' => 'สร้างโดย',
         ];
+    }
+
+    public function getFaculty()
+    {
+        return $this->hasOne(Faculty::className(), ['Fac_key' => 'fac_id']);
     }
 }

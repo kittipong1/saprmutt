@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Activity;
+use app\models\Studen;
 /**
  * This is the model class for table "joinactivity".
  *
@@ -46,5 +47,9 @@ class joinactivity extends \yii\db\ActiveRecord
             'id_actitaty' => 'รหัสกิจกรรม',
             'csv_path'=>'file *.csv',
         ];
+    }
+    public function getActivity()
+    {
+        return $this->hasOne(Activity::className(), ['act_id' => 'id_actitaty']);
     }
 }

@@ -3,7 +3,10 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Joinactivity;
+use app\models\Titlename;
+use app\models\Faculty;
+use app\models\Major;
 /**
  * This is the model class for table "studen".
  *
@@ -71,4 +74,23 @@ class Studen extends \yii\db\ActiveRecord
             'major_id' => 'สาขา',
         ];
     }
+
+    public function getJoinactivity()
+    {
+        return $this->hasMany(Joinactivity::className(), ['studennumber' => 'Stu_id']);
+    }
+
+    public function getTitle()
+    {
+        return $this->hasOne(Titlename::className(), ['id_titlename' => 'idtitle_id']);
+    }
+    public function getFaculty()
+    {
+        return $this->hasOne(Faculty::className(), ['Faculty_id' => 'Fac_id']);
+    }
+    public function getMajor()
+    {
+        return $this->hasOne(Major::className(), ['major_id' => 'major_id']);
+    }
+  
 }

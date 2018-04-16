@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'studennumber',
             'id_actitaty',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','template' => '{view}{delete}'],
         ],
     ]); ?>
 </div>

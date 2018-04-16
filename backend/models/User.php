@@ -23,6 +23,9 @@ class User extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $new_password ;
+    public $confirm_password ;
+    public $old_password ;
     public static function tableName()
     {
         return 'user';
@@ -34,9 +37,9 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at','confirm_password','new_password','old_password'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'auth_status'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email', 'auth_status','confirm_password','new_password','old_password'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
@@ -60,6 +63,9 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'auth_status' => 'Status User',
+            'old_password' => 'รหัสผ่านเก่า',
+            'new_password' => 'รหัสผ่านใหม่',
+            'confirm_password' => 'ยืนยันรหัสผ่าน',
         ];
     }
 }
