@@ -73,6 +73,7 @@ class Studen extends \yii\db\ActiveRecord
             'teacher_id' => 'อาจารย์ที่ปรึกษา',
             'Stu_avatar' => 'Stu Avatar',
             'major_id' => 'สาขา',
+            'Studen_name'=>'ชื่อนักศึกษา',
         ];
     }
 

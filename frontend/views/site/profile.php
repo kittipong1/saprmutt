@@ -94,15 +94,21 @@ Yii::setAlias('@demo01', '@web');
                   	if(Yii::$app->user->isGuest){
                         echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
-                     echo'<li>'.Html::a('ชื่อผู้ใช้ : '.Yii::$app->user->identity->username,'#').'</li>';
+                        echo'<li>'.Html::a('ชื่อผู้ใช้ : '.Yii::$app->user->identity->username,'#').'</li>';
                         echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว',Url::to(['site/profileedit'])).'
                             <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['checkstudentbyteacher/index'])).'</li>';
-                             if(Yii::$app->user->identity->auth_status !== 'admin'){
-                        echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['viewjoinbyme/index'])).'</li>';
-                      }
-                            if(Yii::$app->user->identity->auth_status == 'admin'){
+                          if(Yii::$app->user->identity->auth_status !== 'admin'){
+                            echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['viewjoinbyme/index'])).'</li>';
+                          }
+                          if(Yii::$app->user->identity->auth_status == 'boss'){
+                            echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในหลักสูตร',Url::to(['checkstudentbymajor/index'])).'</li>';
+                          }
+                          if(Yii::$app->user->identity->auth_status == 'deputy'){
+                            echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในคณะ',Url::to(['checkstudentbyfaculty/index'])).'</li>';
+                          }
+                          if(Yii::$app->user->identity->auth_status == 'admin'){
                                 echo '<li>'.Html::a('เพิ่มรายชื่อนักศึกษา',Url::to(['studen/index'])).'</li>';
-                            }
+                          }
                     }
                      ?>
                   </ul>

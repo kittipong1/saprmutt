@@ -15,6 +15,7 @@ use yii\widgets\ActiveForm;
  
 
     <?= $form->field($model, 'id_actitaty')->textInput() ?>
+    <?= $form->field($model, 'studennumber')->textInput() ?>
     <?= $form->field($model, 'csv_path')->fileinput() ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

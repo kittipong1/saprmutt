@@ -116,9 +116,8 @@ class ActivityController extends Controller
 
             $_act_id = $model->fac_id.$model->typefac_id.$str1[1].$calactidl;
             $model->act_id = $_act_id;
-            // $model->id_username = 1;
             $model->id_username = Yii::$app->user->identity->id;
-            
+            $model->status = 'active';
             if($model->save()){
                 $model->save();
             }
@@ -144,15 +143,21 @@ class ActivityController extends Controller
             exit();
         }
         $model = $this->findModel($id);
-
+        if($model->id_username == Yii::$app->user->identity->id){
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->actitaty_id]);
-        } else {
+        } 
+        else {
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
+    }else{
+        throw new NotFoundHttpException('Do not have a permission to do this.');
     }
+    }
+
+
 
     /**
      * Deletes an existing Activity model.

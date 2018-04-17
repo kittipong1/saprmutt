@@ -4,15 +4,15 @@ namespace frontend\controllers;
 
 use Yii;
 use app\models\studen;
-use app\models\CheckstudentbyteacherSearch;
+use app\models\CheckstudentbyfacultySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 /**
- * CheckstudentbyteacherController implements the CRUD actions for studen model.
+ * CheckstudentbyfacultyController implements the CRUD actions for studen model.
  */
-class CheckstudentbyteacherController extends Controller
+class CheckstudentbyfacultyController extends Controller
 {
     /**
      * @inheritdoc
@@ -50,7 +50,7 @@ class CheckstudentbyteacherController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CheckstudentbyteacherSearch();
+        $searchModel = new CheckstudentbyfacultySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

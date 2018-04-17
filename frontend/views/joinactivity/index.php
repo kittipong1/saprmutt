@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'id_actitaty',
             'studennumber',
        
-            ['attribute'=>'ชื่อนักศึกษา',
+            ['attribute'=>'Student_name',
             'value'=> function($model){
                 $return = Joinactivity::find()->where(['studennumber'=>$model->studennumber])->with(['student'])->one();
                 if(is_null($return->student)){

@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
@@ -8,8 +7,9 @@ use app\models\Titlename;
 use app\models\Major;
 use app\models\Joinactivity;
 use app\models\Studen;
+use app\models\Information;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CheckstudentbyteacherSearch */
+/* @var $searchModel app\models\CheckstudentbyfacultySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Studens';
@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="studen-index" style="min-height: 850px">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php $major_id = Information::find()->where(['user_id'=>Yii::$app->user->identity->id])->one(); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -42,14 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Stu_birht_day',
             // 'Stu_Add:ntext',
             // 'Stu_mail',
-            // 'Stu_phone',
-            ['attribute'=>'Fac_id',
-            'value'=> function($model){
-                $ref_idname = Faculty::find()->where(['Faculty_id'=>$model->Fac_id])->one();
-
-                return $ref_idname->Fac_name;
-            },
-            'filter'=> Html::activeDropDownList($searchModel,'Fac_id',ArrayHelper::map(Faculty::find()->orderBy(['Fac_key'=>SORT_ASC])->all(),'Faculty_id','Fac_name'),['class'=>'form-control','prompt' => 'เลือกค้นหาคณะ']),],
+           
             // 'teacher_id',
             // 'Stu_avatar',
  
@@ -60,10 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 return $ref_idname->major_name;
             },
-            'filter'=> Html::activeDropDownList($searchModel,'major_id',ArrayHelper::map(Major::find()->where(['Faculty_id'=>$major_id->Fac_id])->orderBy(['major_name'=>SORT_ASC])->all(),'major_id','major_name'),['class'=>'form-control','prompt' => 'เลือกสาขา']),],
+            'filter'=> Html::activeDropDownList($searchModel,'major_id',ArrayHelper::map(Major::find()->orderBy(['major_name'=>SORT_ASC])->all(),'major_id','major_name'),['class'=>'form-control','prompt' => 'เลือกสาขา']),],
              ['attribute'=>'Status',
              'format' => 'html',
             'value'=> function($model){
+
          $student = Studen::find()->where(['Stu_id'=>$model->Stu_id])->with('faculty')->one();
         $activity1 = joinactivity::find()->where(['studennumber'=>$model->Stu_id])->andWhere(['like', 'id_actitaty','00%',false])->with('activity')->count();
         $activity2 = joinactivity::find()->where(['studennumber'=>$model->Stu_id])->andWhere(['like', 'id_actitaty',$student->faculty->Fac_key.'%',false])->with('activity')->count();
@@ -80,3 +75,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+

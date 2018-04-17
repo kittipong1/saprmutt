@@ -96,8 +96,10 @@ $this->registerJs("
         </div>
 
     <?= $form->field($model, 'act_comment')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'status')->dropDownList(['active'=>'active','disable'=>'disable']) ?>
+    <?php if(Yii::$app->user->identity->auth_status == 'deputy') { ?>
+       <?= $form->field($model, 'status')->dropDownList(['active'=>'active','disable'=>'disable']) ?>
+    <?php } ?>
+   
 
     <!-- <?= $form->field($model, 'id_username')->textInput(['maxlength' => true]) ?> -->
 

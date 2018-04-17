@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\studen;
-use app\models\CheckstudentbyteacherSearch;
+use app\models\activity;
+use app\models\MyactivitySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 /**
- * CheckstudentbyteacherController implements the CRUD actions for studen model.
+ * MyactivityController implements the CRUD actions for activity model.
  */
-class CheckstudentbyteacherController extends Controller
+class MyactivityController extends Controller
 {
     /**
      * @inheritdoc
@@ -45,12 +45,12 @@ class CheckstudentbyteacherController extends Controller
     }
 
     /**
-     * Lists all studen models.
+     * Lists all activity models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CheckstudentbyteacherSearch();
+        $searchModel = new MyactivitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -60,7 +60,7 @@ class CheckstudentbyteacherController extends Controller
     }
 
     /**
-     * Displays a single studen model.
+     * Displays a single activity model.
      * @param integer $id
      * @return mixed
      */
@@ -72,25 +72,20 @@ class CheckstudentbyteacherController extends Controller
     }
 
     /**
-     * Creates a new studen model.
+     * Creates a new activity model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new studen();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Id_information]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+            return $this->redirect(['activity/create']);
+            
+        
     }
 
     /**
-     * Updates an existing studen model.
+     * Updates an existing activity model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,39 +93,38 @@ class CheckstudentbyteacherController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Id_information]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        return $this->redirect(['activity/update', 'id' => $model->actitaty_id]);
+       
     }
 
     /**
-     * Deletes an existing studen model.
+     * Deletes an existing activity model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
-    {
+    {   
+        $model = $this->findModel($id);
+        if($model->id_username == Yii::$app->user->identity->id){
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
+        }
+        else{
+            throw new NotFoundHttpException('Do not have a permission to do this.');
+        }
     }
 
     /**
-     * Finds the studen model based on its primary key value.
+     * Finds the activity model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return studen the loaded model
+     * @return activity the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = studen::findOne($id)) !== null) {
+        if (($model = activity::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

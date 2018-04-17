@@ -29,7 +29,7 @@ class joinactivity extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['studennumber', 'id_actitaty'], 'required'],
+            [['id_actitaty'], 'required'],
             [['studennumber'], 'string', 'max' => 255],
             [['id_actitaty'], 'string', 'max' => 9],
             [['csv_path'],'file','skipOnEmpty'=>true,'on' => 'update','extensions'=>'csv'],

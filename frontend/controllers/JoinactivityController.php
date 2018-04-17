@@ -82,32 +82,27 @@ class JoinactivityController extends Controller
         $model = new joinactivity();
         if(Yii::$app->user->identity->auth_status =='deputy'){
         if ($model->load(Yii::$app->request->post())) {
+            if(empty($model->studennumber)){
+
             $file = UploadedFile::getInstance($model, 'csv_path');
-            if ( $file ){
+                if ($file){
                     $time = time();
                     $file->saveAs('./uploads/csv/' .$time. '.' . $file->extension);
                     $file = './uploads/csv/' .$time. '.' . $file->extension;
-
-                     $handle = fopen($file, "r");
-                     while (($fileop = fgetcsv($handle, 1000, ",")) !== false) 
-                     {
+                    $handle = fopen($file, "r");
+                    while (($fileop = fgetcsv($handle, 1000, ",")) !== false) {
                         $name = $fileop[0];
                         $id_actitaty = $model->id_actitaty;
-                        // print_r($fileop);exit();
                         $sql = "INSERT INTO joinactivity(studennumber, id_actitaty) VALUES ('$name', '$id_actitaty')";
                         $query = Yii::$app->db->createCommand($sql)->execute();
-                     }
-
-                     if ($query) 
-                     {
-                        echo "data upload successfully";
-                     }
-
-                }
-
-             if($model->save()){
+                    }
+                }   
+            }else{
+                if($model->save()){
                 $model->save();
             }
+            }
+            
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [

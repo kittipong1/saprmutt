@@ -8,8 +8,9 @@ use app\models\Titlename;
 use app\models\Major;
 use app\models\Joinactivity;
 use app\models\Studen;
+use app\models\Information;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CheckstudentbyteacherSearch */
+/* @var $searchModel app\models\CheckstudentbymajorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Studens';
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php $major_id = Information::find()->where(['user_id'=>Yii::$app->user->identity->id])->one(); ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -43,13 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Stu_Add:ntext',
             // 'Stu_mail',
             // 'Stu_phone',
-            ['attribute'=>'Fac_id',
-            'value'=> function($model){
-                $ref_idname = Faculty::find()->where(['Faculty_id'=>$model->Fac_id])->one();
-
-                return $ref_idname->Fac_name;
-            },
-            'filter'=> Html::activeDropDownList($searchModel,'Fac_id',ArrayHelper::map(Faculty::find()->orderBy(['Fac_key'=>SORT_ASC])->all(),'Faculty_id','Fac_name'),['class'=>'form-control','prompt' => 'เลือกค้นหาคณะ']),],
+           
             // 'teacher_id',
             // 'Stu_avatar',
  
@@ -80,3 +76,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
