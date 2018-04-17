@@ -62,7 +62,11 @@ $sc = "
       eventLimit: true, 
       events: [";
 foreach ($events as $key => $value) {
-  $sc .= "{ title: '".$value->act_name."',  start: '".$value->act_sday."', end: '".$value->act_eday."'},";
+  $date = $value->act_eday ;
+  $date1 = str_replace('-', '/', $date);
+  $tomorrow = date('Y-m-d',strtotime($date1 . "+1 days"));
+
+  $sc .= "{ title: '".$value->act_name."',  start: '".$value->act_sday."', end: '".$tomorrow."'},";
 }
      $sc .= "
        

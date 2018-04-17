@@ -121,8 +121,8 @@ class SiteController extends Controller
         $topactivitystudent = $command->queryAll();
         return $this->render('index',[
                'news'=>$news,
-               'activity1'=>$activity1all,
-               'activity2'=>$activity2all,
+               'activity2'=>$activity1all,
+               'activity1'=>$activity2all,
                'banners'=>$banners,
                'topactivitystudent'=>$topactivitystudent,
             ]);

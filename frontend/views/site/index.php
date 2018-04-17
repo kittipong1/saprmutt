@@ -103,8 +103,8 @@ use app\models\faculty;
                                     </thead>
                                     <tbody>
                                     <?php if(isset($activity1)){
-
                                           foreach ($activity1 as $key => $value) {
+                                           if($key < 3){
                                             $k = $key+1 ;
                                           ?>
                                       <tr>
@@ -115,7 +115,7 @@ use app\models\faculty;
                                         ?></td>
                                         <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
                                       </tr>
-                                    <?php  }} ?>
+                                    <?php  }}} ?>
                                     </tbody>
                                   </table>
                         </div>
@@ -150,6 +150,7 @@ use app\models\faculty;
                                     <?php if(isset($activity2)){
 
                                           foreach ($activity2 as $key => $value) {
+                                            if($key < 3){
                                             $k = $key+1 ;
                                           ?>
                                       <tr>
@@ -160,7 +161,7 @@ use app\models\faculty;
                                         ?></td>
                                         <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
                                       </tr>
-                                    <?php  }} ?>
+                                    <?php    }}} ?>
                                     </tbody>
                                   </table>
                         </div>
