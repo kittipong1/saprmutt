@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <!--  <?php  echo $this->render('_search', ['model' => $searchModel]); ?> -->
 
     <p>
-        <?php if(Yii::$app->user->identity->auth_status=='deputy'){
+        <?php if(Yii::$app->user->identity->auth_status=='deputy' || Yii::$app->user->identity->auth_status=='boss' || Yii::$app->user->identity->auth_status=='teacher'){
             echo Html::a('Create Activity', ['create'], ['class' => 'btn btn-success']);
         }?>
          <?= Html::a('Clear Search', ['activity/index'], ['class' => 'btn btn-primary']) ?>

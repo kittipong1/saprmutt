@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Faculty;
 /**
  * This is the model class for table "information".
  *
@@ -70,5 +70,9 @@ class Information extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'avatar_path' => 'รูปภาพ *.Jpg'
         ];
+    }
+     public function getFaculty()
+    {
+        return $this->hasone(Faculty::className(), ['Faculty_id' => 'Fac_id']);
     }
 }
