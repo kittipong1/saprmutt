@@ -177,7 +177,8 @@ class SiteController extends Controller
             $model->user_id = $userid;
 
             $file = UploadedFile::getInstance($model,'avatar_path');
-            if($file->size!=0){
+    
+            if((!empty($file) && $file->size!=0)){
 
                 $model->avatar = $file->basename.'.'.$file->extension;
                 $file->saveAs('./uploads/information/'.$file->basename.'.'.$file->extension);
@@ -190,11 +191,10 @@ class SiteController extends Controller
         }
         }else {
              $model = information::findOne(['user_id'=>$userid]);
-
-
              if ($model->load(Yii::$app->request->post())) {
                 $file = UploadedFile::getInstance($model,'avatar_path');
-            if($file->size!=0){
+               
+            if($file && $file->size!=0){
 
                 $model->avatar = $file->basename.'.'.$file->extension;
                 $file->saveAs('./uploads/information/'.$file->basename.'.'.$file->extension);

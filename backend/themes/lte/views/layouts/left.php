@@ -61,11 +61,11 @@ if(Yii::$app->user->isGuest){
                     //     ],
                     // ],
                     [
-                        'label' => 'จัดการ User',
+                        'label' => 'จัดการ ผู้ใช้',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'เพิ่ม User', 'icon' => 'plus', 'url' => ['/usermanager/create'],],
-                            ['label' => 'รายการ User ', 'icon' => 'book', 'url' => ['/usermanager/index'],],
+                            ['label' => 'เพิ่ม ผู้ใช้', 'icon' => 'plus', 'url' => ['/usermanager/create'],],
+                            ['label' => 'รายการ ผู้ใช้ ', 'icon' => 'book', 'url' => ['/usermanager/index'],],
 ],],
 //                     [
 //                         'label' => 'การจัดการ VDO',
@@ -99,20 +99,33 @@ if(Yii::$app->user->isGuest){
             
 //             ],
 //             ['label' => 'ปรเภทคลังอัลบัมรูปภาพ', 'icon' => 'file-image-o', 'url' => ['/album']],
+ [
+                        'label' => 'การจัดการรูปอัลบัมรูปภาพ',
+                        'icon' => 'image',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'เพิ่มรูปภาพ', 'icon' => 'plus', 'url' => ['/image/create'],],
+                            ['label' => 'รายการอัลบัมรูปภาพ ', 'icon' => 'book', 'url' => ['/image/index'],],
+],
+            
+            ],
+            ['label' => 'ปรเภทคลังอัลบัมรูปภาพ', 'icon' => 'file-image-o', 'url' => ['/album']],
+
+           
 
             [
-                        'label' => 'การจัดการเกี่ยวกับเรา',
+                        'label' => 'การจัดการติดต่อเรา',
                         'icon' => 'file-text-o',
                         'url' => '#',
                         'items' => [
                             // ['label' => 'เพิ่มเกี่ยวกับเรา', 'icon' => 'plus', 'url' => ['/about/create'],],
-                            ['label' => 'รายการเกี่ยวกับเรา ', 'icon' => 'book', 'url' => ['/about/index'],],
+                            ['label' => 'รายการติดต่อเรา ', 'icon' => 'book', 'url' => ['/about/index'],],
 ],
             
             ],
 
             [
-                        'label' => 'การจัดการเกี่ยวกับ banner',
+                        'label' => 'รายการ banner',
                        
                         'url' => '#',
                         'items' => [

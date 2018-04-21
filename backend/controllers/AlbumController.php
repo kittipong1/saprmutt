@@ -27,12 +27,12 @@ class AlbumController extends Controller
                     [
                         'actions' => ['index', 'create','update','view'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['@'],
                     ],
                     [
                         'actions' => ['index', 'create','update','view'],
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],

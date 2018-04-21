@@ -143,7 +143,7 @@ class ActivityController extends Controller
             exit();
         }
         $model = $this->findModel($id);
-        if($model->id_username == Yii::$app->user->identity->id){
+        if($model->id_username == Yii::$app->user->identity->id || Yii::$app->user->identity->auth_status == 'deputy'){
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->actitaty_id]);
         } 

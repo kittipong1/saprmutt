@@ -60,6 +60,20 @@ body {
 	background-color: #eeeeee;
 	/*background: url(../images/bg.jpg) no-repeat center bottom;*/
 }
+
+@media screen /*--This is for Screen--*/
+{
+    .btn
+    {
+        background-color: #AFAFAF;
+        display: block;
+    }
+    .tble
+    {
+        background-color: #E5E5E5;
+        border: 1px solid #CD853F;
+    }
+}
 strong, b {
 	font-family: 'quarkbold';
 }

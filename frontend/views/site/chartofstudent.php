@@ -136,9 +136,7 @@ $this->registerJs($sc, \yii\web\View::POS_READY);
                 <div class="col-md-6">
                   <canvas id="chart-area"></canvas>
                 </div>
-          </div>
-			
-					
+              
                 <?php $query = new Query;
                 $query
                 ->select(['faculty.Fac_name', 'COUNT(activity.actitaty_id) As Count'])->from('Faculty')->join('INNER JOIN','activity','activity.fac_id = faculty.Fac_key')->join('INNER JOIN','joinactivity','joinactivity.id_actitaty = activity.act_id')->groupBy('faculty.Fac_name')->orderBy(['Fac_name' => 'DESC'])->all(); 

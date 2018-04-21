@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\bannersearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Banners';
+$this->title = 'ป้ายประชาสัมพันธ์';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-primary box-solid">
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             'ban_id',
-            'user_id',
+            //'user_id',
             'ban_name',
             'ban_link:ntext',
             'ban_image',

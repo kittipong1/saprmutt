@@ -8,6 +8,7 @@ use app\models\Titlename;
 use app\models\Major;
 use app\models\Joinactivity;
 use app\models\Studen;
+use app\models\Information;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CheckstudentbyteacherSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */

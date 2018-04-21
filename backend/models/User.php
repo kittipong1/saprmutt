@@ -54,9 +54,9 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'ชื่อผู้ใช้',
             'auth_key' => 'Auth Key',
-            'password_hash' => 'Password',
+            'password_hash' => 'รหัสผ่าน',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'status' => 'Status',

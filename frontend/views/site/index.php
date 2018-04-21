@@ -109,7 +109,7 @@ use app\models\faculty;
                                           ?>
                                       <tr>
                                         <td><?=$k?></td>
-                                        <td><?=$value["act_name"]?></td>
+                                        <td style="text-align: center;"><?=$value["act_name"]?></td>
                                         <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
                                         echo $faculty->Fac_name;
                                         ?></td>
@@ -154,8 +154,8 @@ use app\models\faculty;
                                             $k = $key+1 ;
                                           ?>
                                       <tr>
-                                        <td><?=$k?></td>
-                                        <td><?=$value["act_name"]?></td>
+                                        <td ><?=$k?></td>
+                                        <td style="text-align: center;"><?=$value["act_name"]?></td>
                                         <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
                                         echo $faculty->Fac_name;
                                         ?></td>

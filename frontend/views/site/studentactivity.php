@@ -2,13 +2,31 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Faculty;
+use yii\web\View;
+Yii::setAlias('@demo01', '@web');
+$js = "function PrintPreview() {";
+$js .= "var toPrint = document.getElementById('printarea');";
+$js .= "var popupWin = window.open('', '_blank', 'width=350,height=150,location=no,left=200px');";
+$js .= "popupWin.document.open();";
+$js .= "popupWin.document.write('";
+$js .=	'<html><title>::Print Preview::</title><link rel="stylesheet" type="text/css" href="'.Yii::getAlias('@demo01').'/css/Print.css" /></head><body onload="window.print()" >';
+$js .=	"')
+        popupWin.document.write(toPrint.innerHTML);
+        popupWin.document.write('</html>');
+        popupWin.document.close();
+    }";
+ $this->registerJs($js, View::POS_END, 'my-options');   
+
  ?>
 
-<div class="site-studentactivity" style="min-height: 1000px;">
+<div class="site-studentactivity" id="printarea" style="min-height: 1000px;">
 <h1>ประวัติการเข้าร่วมกิจกรรมนักศึกษา</h1>
 	<?php if(isset($student)){ ?>
 <table class="table table-hover" style="background-color:lavender;">
-	
+	<div class="text-right">
+	<button type="button" class="btn" onclick="PrintPreview()">
+	<i class="fa fa-print"></i>  Print Preview</button>
+	</div>
 	<thead>
 		<tr>
 			<th>รหัสนักศึกษา</th>
@@ -54,9 +72,10 @@ use app\models\Faculty;
 	
 			<?php foreach ($activity as $key => $value) { 
 				$faculty = Faculty::find()->where(['Fac_key'=>$value->activity->fac_id])->one();
+				$k = $key +1 ;
 				?>
 				<tr>
-			<td><?=$key?></td>
+			<td><?=$k?></td>
 			<td><?=$value->id_actitaty?></td>
 			<td><?=$value->activity->act_name?></td>
 			<td><?=$value->activity->act_term?></td>
@@ -87,9 +106,10 @@ use app\models\Faculty;
 	
 			<?php foreach ($activity2 as $key => $value) { 
 				$faculty = Faculty::find()->where(['Fac_key'=>$value->activity->fac_id])->one();
+				$k = $key +1 ;
 				?>
 				<tr>
-			<td><?=$key?></td>
+			<td><?=$k?></td>
 			<td><?=$value->id_actitaty?></td>
 			<td><?=$value->activity->act_name?></td>
 			<td><?=$value->activity->act_term?></td>
@@ -119,9 +139,10 @@ use app\models\Faculty;
 	
 			<?php foreach ($activity3 as $key => $value) { 
 				$faculty = Faculty::find()->where(['Fac_key'=>$value->activity->fac_id])->one();
+				$k = $key +1 ;
 				?>
 				<tr>
-			<td><?=$key?></td>
+			<td><?=$k?></td>
 			<td><?=$value->id_actitaty?></td>
 			<td><?=$value->activity->act_name?></td>
 			<td><?=$value->activity->act_term?></td>
@@ -149,9 +170,10 @@ use app\models\Faculty;
 	
 			<?php foreach ($activity4 as $key => $value) { 
 				$faculty = Faculty::find()->where(['Fac_key'=>$value->activity->fac_id])->one();
+				$k = $key +1 ;
 				?>
 				<tr>
-			<td><?=$key?></td>
+			<td><?=$k?></td>
 			<td><?=$value->id_actitaty?></td>
 			<td><?=$value->activity->act_name?></td>
 			<td><?=$value->activity->act_term?></td>
@@ -165,3 +187,4 @@ use app\models\Faculty;
 <h2> <?=$status?></h2>
 	<?php } ?>
 </div>
+    

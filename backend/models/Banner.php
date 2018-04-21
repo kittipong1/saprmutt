@@ -51,16 +51,16 @@ class Banner extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ban_id' => 'Ban ID',
+            'ban_id' => 'ลำดับ',
             'user_id' => 'id admin',
-            'ban_name' => 'Ban Name',
-            'ban_link' => 'Ban Link',
-            'ban_image' => 'Ban Image',
+            'ban_name' => 'ชื่อป้ายประชาสัมพันธ์',
+            'ban_link' => 'ลิงค์ป้ายประชาสัมพันธ์',
+            'ban_image' => 'ภาพประชาสัมพันธ์',
             'banner' => 'แนบรูปภาพป้ายประชาสัมพันธ์',
             'create_date' => 'Create Date',
             'modified_date' => 'Modified Date',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
+            'start_date' => 'วันที่เริ่มใช้',
+            'end_date' => 'วันที่สิ้นสุดการใช้งาน',
             'view' => 'View',
             'ban_detail' => 'รายละเอียด',
         ];
