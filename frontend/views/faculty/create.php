@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\faculty */
 
-$this->title = 'Create Faculty';
+$this->title = 'เพิ่ม คณะ';
 $this->params['breadcrumbs'][] = ['label' => 'Faculties', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

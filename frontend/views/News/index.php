@@ -9,7 +9,7 @@ use app\models\Faculty;
 /* @var $searchModel app\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 Yii::setAlias('@demo01', '@web');
-$this->title = 'News';
+$this->title = 'ข่าว';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index" style="min-height: 1000px;">
@@ -18,15 +18,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create News', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม ข่าว', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
-            'news_id',
+            //+'news_id',
             //'news_type_id',
             //'user_id',
             // ['attribute'=>'news_type_lang',

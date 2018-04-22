@@ -19,10 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Fac Type', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             'id_type',
             'type_name',

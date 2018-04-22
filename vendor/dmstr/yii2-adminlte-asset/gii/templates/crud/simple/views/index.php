@@ -37,7 +37,7 @@ if ($generator->indexWidgetType === 'grid'):
     echo "        <?= " ?>GridView::widget([
             'dataProvider' => $dataProvider,
             <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n            'layout' => \"{items}\\n{summary}\\n{pager}\",\n            'columns' => [\n" : "'layout' => \"{items}\\n{summary}\\n{pager}\",\n            'columns' => [\n"; ?>
-                ['class' => 'yii\grid\SerialColumn'],
+                ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
 <?php
 $count = 0;

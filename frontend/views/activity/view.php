@@ -2,7 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\User;
+use app\models\Faculty;
+use app\models\FacType;
 /* @var $this yii\web\View */
 /* @var $model app\models\Activity */
 
@@ -12,10 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->actitaty_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('แก้ไข', ['update', 'id' => $model->actitaty_id], ['class' => 'btn btn-primary']) ?>
         
     </p>
 
@@ -25,14 +26,30 @@ $this->params['breadcrumbs'][] = $this->title;
             'actitaty_id',
             'act_id',
             'act_name',
-            'fac_id',
-            'typefac_id',
+
+            ['attribute'=>'fac_id',
+            'value'=> function($model){
+                $ref_idname = Faculty::find()->where(['Fac_key'=>$model->fac_id])->one();
+
+                return $ref_idname->Fac_name;
+            }],
+            ['attribute'=>'typefac_id',
+            'value'=> function($model){
+                $ref_idname = FacType::find()->where(['id_type'=>$model->typefac_id])->one();
+
+                return $ref_idname->type_name;
+            }],
             'act_term',
             'act_sday',
             'act_eday',
             'act_comment:ntext',
             'status',
-            'id_username',
+             ['attribute'=>'id_username',
+            'value'=> function($model){
+                $ref_idname = User::find()->where(['id'=>$model->id_username])->one();
+
+                return $ref_idname->username;
+            }],
         ],
     ]) ?>
 

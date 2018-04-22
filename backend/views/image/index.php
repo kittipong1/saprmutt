@@ -20,10 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Image', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
             ['attribute'=>'image_name','contentOptions' => ['class' => 'text-center'],
             'headerOptions' => ['class' => 'text-center']],
             ['attribute'=>'ref_id',

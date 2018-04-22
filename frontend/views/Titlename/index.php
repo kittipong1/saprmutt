@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TitlenameSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Titlenames';
+$this->title = 'คำนำหน้าชื่อ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="titlename-index" style="min-height: 1000px;">
@@ -16,13 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Titlename', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มคำนำหน้าชื่อ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'id_titlename',
             'titlename_en',

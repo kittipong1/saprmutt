@@ -9,26 +9,26 @@ use app\models\Factype;
 /* @var $searchModel app\models\ActivitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Activities';
+$this->title = 'กิจกรรม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-index" style="min-height: 1000px;">
 
     <h1><?= Html::encode($this->title) ?></h1>
-        สถานะ :: <?=Yii::$app->user->identity->auth_status ?>
    <!--  <?php  echo $this->render('_search', ['model' => $searchModel]); ?> -->
 
     <p>
         <?php if(Yii::$app->user->identity->auth_status=='deputy' || Yii::$app->user->identity->auth_status=='boss' || Yii::$app->user->identity->auth_status=='teacher'){
-            echo Html::a('Create Activity', ['create'], ['class' => 'btn btn-success']);
+            echo Html::a('เพิ่ม กิจกรรม', ['create'], ['class' => 'btn btn-success']);
         }?>
-         <?= Html::a('Clear Search', ['activity/index'], ['class' => 'btn btn-primary']) ?>
+         <?= Html::a('รีเช็ตการค้นหา', ['activity/index'], ['class' => 'btn btn-primary']) ?>
     </p>
     <?= GridView::widget([
+         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'actitaty_id',
             'act_id',

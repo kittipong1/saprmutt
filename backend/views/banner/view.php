@@ -17,8 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box-body">
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ban_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->ban_id], [
+        <?= Html::a('แก้ไข', ['update', 'id' => $model->ban_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('ลบ', ['delete', 'id' => $model->ban_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

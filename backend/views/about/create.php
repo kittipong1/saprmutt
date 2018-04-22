@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\About */
 
-$this->title = 'Create About';
+$this->title = 'เพิ่ม ติดต่อเรา';
 $this->params['breadcrumbs'][] = ['label' => 'Abouts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

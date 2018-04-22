@@ -44,6 +44,7 @@ if (isset($this->context->module->panels['db']) && isset($this->context->module-
     $statusCodes = !empty($codes) ? array_combine($codes, $codes) : null;
 
     echo GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'rowOptions' => function ($model, $key, $index, $grid) use ($searchModel) {
@@ -56,7 +57,7 @@ if (isset($this->context->module->panels['db']) && isset($this->context->module-
             }
         },
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
             [
                 'attribute' => 'tag',
                 'value' => function ($data) {

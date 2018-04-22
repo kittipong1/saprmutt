@@ -8,7 +8,7 @@ use app\models\Faculty;
 /* @var $searchModel app\models\MajorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Majors';
+$this->title = 'สาขา';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="major-index" style="min-height: 1000px">
@@ -17,13 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Major', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม สาขา', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             'major_id',
             'major_name',

@@ -10,7 +10,7 @@ use yii\web\View;
 /* @var $searchModel app\models\StudenSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Studens';
+$this->title = 'รายชื่อนักศึกษา';
 $this->params['breadcrumbs'][] = $this->title;
 $style = 'body{
 font-size: 15px;
@@ -25,17 +25,18 @@ $this->registerCss($style);
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Studen', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มรายชื่อนักศึกษา', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'Id_information',
             'Stu_id',
-            'Stu_id_card',
+            //'Stu_id_card',
             ['attribute'=>'idtitle_id',
             'value'=> function($model){
                 $ref_idname = Titlename::find()->where(['id_titlename'=>$model->idtitle_id])->one();
@@ -49,8 +50,8 @@ $this->registerCss($style);
              'Stu_lastname_th',
             // 'Stu_birht_day',
             // 'Stu_Add',
-             'Stu_mail',
-             'Stu_phone',
+             //'Stu_mail',
+             //'Stu_phone',
             ['attribute'=>'Fac_id',
             'value'=> function($model){
                 $ref_idname = Faculty::find()->where(['Faculty_id'=>$model->Fac_id])->one();

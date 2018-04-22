@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\major */
 
-$this->title = 'Update Major: ' . $model->major_id;
+$this->title = 'แก้ไข สาขา';
 $this->params['breadcrumbs'][] = ['label' => 'Majors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->major_id, 'url' => ['view', 'id' => $model->major_id]];
 $this->params['breadcrumbs'][] = 'Update';

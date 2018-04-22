@@ -103,7 +103,9 @@ class NewsController extends Controller
 
              $file = UploadedFile::getInstance($model,'news_imagepath');
             if($file->size!=0){
-                mkdir("./uploads/news/".$model->news_type_id, 0777, true);
+                if (!is_dir('./uploads/news/'.$model->news_type_id.'/')) {
+                    mkdir("./uploads/news/".$model->news_type_id."/");
+                }
                 $model->news_image = $file->basename.'.'.$file->extension;
                 $file->saveAs('./uploads/news/'.$model->news_type_id.'/'.$file->basename.'.'.$file->extension);
              

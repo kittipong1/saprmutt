@@ -153,7 +153,7 @@ class ActivityController extends Controller
             ]);
         }
     }else{
-        throw new NotFoundHttpException('Do not have a permission to do this.');
+        throw new NotFoundHttpException('ไม่มีสิทธิ์การเข้าถึง');
     }
     }
 

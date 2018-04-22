@@ -57,19 +57,19 @@ class News extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'news_id' => 'News ID',
-            'news_type_id' => 'News Type ID',
-            'user_id' => 'id admin',
-            'news_type_lang' => 'News Type Lang',
-            'news_name' => 'News Name',
-            'news_explain' => 'News Explain',
-            'news_image' => 'News Image',
-            'create_date' => 'Create Date',
-            'modified_date' => 'Modified Date',
-            'news_view' => 'News View',
-            'active' => 'Active',
+            'news_id' => 'รหัสข่าวสาร',
+            'news_type_id' => 'ประเภทข่าวสาร',
+            'user_id' => 'ผู้สร้างข่าว',
+            'news_type_lang' => 'ข่าวภาษา',
+            'news_name' => 'ชื่อข่าว',
+            'news_explain' => 'คำอธิบายข่าว',
+            'news_image' => 'ภาพข่าว',
+            'create_date' => 'วันที่สร้าง',
+            'modified_date' => 'วันที่แก้ไขล่าสุด',
+            'news_view' => 'จำนวนผู้ชม',
+            'active' => 'สถานะ',
             'news_description' => 'รายละเอียดข่าวสาร',
-            'fac_id' => 'Fac ID',
+            'fac_id' => 'หน่วยงานผู้ดูแล',
             'news_imagepath'=>'รูปข่าว'
         ];
     }

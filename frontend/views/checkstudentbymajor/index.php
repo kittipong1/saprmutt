@@ -22,10 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $major_id = Information::find()->where(['user_id'=>Yii::$app->user->identity->id])->one(); ?>
 
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'Id_information',
             'Stu_id',

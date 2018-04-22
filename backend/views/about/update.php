@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\About */
 
-$this->title = 'Update About: ' . $model->about_id;
+$this->title = 'แก้ไข ติดต่อเรา  ';
 $this->params['breadcrumbs'][] = ['label' => 'Abouts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->about_id, 'url' => ['view', 'id' => $model->about_id]];
 $this->params['breadcrumbs'][] = 'Update';

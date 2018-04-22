@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\aboutsearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Abouts';
+$this->title = 'ติดต่อเรา';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-success box-solid">
@@ -22,10 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
        <!--  <?= Html::a('Create About', ['create'], ['class' => 'btn btn-success']) ?> -->
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'about_id',
             //'user_id',

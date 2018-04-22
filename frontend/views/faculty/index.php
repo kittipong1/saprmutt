@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\FacultySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Faculties';
+$this->title = 'คณะ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="faculty-index" style="min-height: 1000px">
@@ -16,13 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Faculty', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม คณะ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             'Faculty_id',
             'Fac_key',

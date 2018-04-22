@@ -57,4 +57,12 @@ class SignupForm extends Model
         
         return $user->save() ? $user : null;
     }
+     public function attributeLabels()
+    {
+        return [
+            'username' => 'ชื่อผู้ใช้',
+            'password_hash'=>'รหัสผ่าน',
+            'auth_status' => 'ระดับของผู้ใช้',
+        ];
+    }
 }

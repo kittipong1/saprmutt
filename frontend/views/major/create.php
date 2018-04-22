@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\major */
 
-$this->title = 'Create Major';
+$this->title = 'เพิ่มสาขา';
 $this->params['breadcrumbs'][] = ['label' => 'Majors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

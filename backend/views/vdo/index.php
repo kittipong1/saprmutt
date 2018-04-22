@@ -20,10 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Vdo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
             //'vdo_id',
             ['attribute'=>'ref_id','contentOptions' => ['class' => 'text-center'],

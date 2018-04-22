@@ -16,14 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="box-body">
         <p>
-        <?= Html::a('Update', ['update', 'id' => $model->about_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->about_id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?= Html::a('แก้ไข', ['update', 'id' => $model->about_id], ['class' => 'btn btn-primary']) ?>
+        
     </p>
 
     <?= DetailView::widget([

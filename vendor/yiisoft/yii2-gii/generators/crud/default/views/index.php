@@ -36,9 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $generator->enablePjax ? '<?php Pjax::begin(); ?>' : '' ?>
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ',
         'dataProvider' => $dataProvider,
         <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => [\n" : "'columns' => [\n"; ?>
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
 <?php
 $count = 0;
@@ -67,6 +68,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     ]); ?>
 <?php else: ?>
     <?= "<?= " ?>ListView::widget([
+        'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ',
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
         'itemView' => function ($model, $key, $index, $widget) {
