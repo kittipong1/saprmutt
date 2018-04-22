@@ -7,6 +7,24 @@ use app\models\Titlename;
 use yii\web\View;
 use app\models\Faculty;
 use app\models\Major;
+
+$js = '$(document).ready(function() {
+$("#information-fac_id").change(function() {';
+$fac = Faculty::find()->all();
+$js .= 'var val = $(this).val();';
+foreach ($fac as $key => $value) {
+  $js .= 'if (val == "'.$value['Faculty_id'].'") {';
+  $major = Major::find()->where(['Faculty_id'=>$value['Faculty_id']])->all();
+   $js .= '$("#information-major_id").html("';
+  foreach ($major as $key2 => $value2) {
+     $js .= '<option value=';
+     $js .="'".$value2['major_id'];
+     $js .= "'".'>'.$value2['major_name'].'</option>';
+  }
+  $js .='");}';
+}
+$js .= '});});';
+
 $this->registerJs(" 
  
     $(function () {
@@ -20,7 +38,7 @@ $this->registerJs("
 
   
 
-    ", View::POS_END, 'my-options');
+    ".$js, View::POS_END, 'my-options');
 ?>
 
 

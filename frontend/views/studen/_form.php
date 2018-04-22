@@ -11,7 +11,6 @@ use app\models\Information;
 
 $js = '$(document).ready(function() {
 $("#studen-fac_id").change(function() {';
-
 $fac = Faculty::find()->all();
 $js .= 'var val = $(this).val();';
 foreach ($fac as $key => $value) {
@@ -24,8 +23,7 @@ foreach ($fac as $key => $value) {
      $js .= "'".'>'.$value2['major_name'].'</option>';
   }
   $js .='");}';
- 
-}        
+}
 $js .= '});});';
 $this->registerJs($js, View::POS_END, 'my-options');
 ?>
