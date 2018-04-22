@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\joinactivity */
 
-$this->title = 'Update Joinactivity: ' . $model->id_joinactivity;
+$this->title = 'แก้ไขรายชื่อการเข้าร่วมกิจกรรม';
 $this->params['breadcrumbs'][] = ['label' => 'Joinactivities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id_joinactivity, 'url' => ['view', 'id' => $model->id_joinactivity]];
 $this->params['breadcrumbs'][] = 'Update';

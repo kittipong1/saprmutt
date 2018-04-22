@@ -9,7 +9,7 @@ use app\models\Studen;
 /* @var $searchModel app\models\JoinactivitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Joinactivities';
+$this->title = 'รายชื่อการเข้าร่วมกิจกรรม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="joinactivity-index" style="min-height: 1000px">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Joinactivity', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
