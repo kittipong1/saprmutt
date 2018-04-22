@@ -33,7 +33,7 @@ Yii::setAlias('@demo01', '@web');
           <?php 
 
           if(is_null($profile['avatar'])){ ?>
-     			<img data-src="#" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu8BWTAQiujkB8jhc9Maq4QVrxSM39HNcpLAoyuTgma1SjH-SdkQ" style="border-radius: 20%;">
+     			<img data-src="#" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" style="border-radius: 20%;">
           <?php }else{ ?>
           <img data-src="#" src="<?=Yii::getAlias('@demo01').'/uploads/information/'.$profile->avatar?>" style="border-radius: 20%;">
           <?php } ?>
