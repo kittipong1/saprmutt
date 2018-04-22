@@ -10,10 +10,9 @@ use common\models\User;
 class SignupForm extends Model
 {
     public $username;
-    public $email;
     public $password_hash;
     public $auth_status;
-
+    public $banned;
     /**
      * {@inheritdoc}
      */
@@ -25,15 +24,12 @@ class SignupForm extends Model
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+          
             ['auth_status', 'required'],
             ['auth_status', 'string', 'max' => 255],
             ['password_hash', 'required'],
             ['password_hash', 'string', 'min' => 6],
+            ['banned','integer'],
         ];
     }
 
@@ -50,7 +46,6 @@ class SignupForm extends Model
         
         $user = new User();
         $user->username = $this->username;
-        $user->email = $this->email;
         $user->auth_status = $this->auth_status;
         $user->setPassword($this->password_hash);
         $user->generateAuthKey();
@@ -63,6 +58,7 @@ class SignupForm extends Model
             'username' => 'ชื่อผู้ใช้',
             'password_hash'=>'รหัสผ่าน',
             'auth_status' => 'ระดับของผู้ใช้',
+            'banned'=>'สถานนะการงดใช้งาน',
         ];
     }
 }

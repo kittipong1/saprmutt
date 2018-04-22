@@ -18,10 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password_hash')->passwordInput() ?>
 
-    <!-- <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?> -->
-
     <?= $form->field($model, 'auth_status')->dropdownlist(['teacher' => 'อาจารย์','studen'=>'นักศึกษา','deputy'=>'รองคณะบดีฝ่ายพัฒนานักศึกษา','boss'=>'ประธานหลักสูตร']) ?>
-
+    <?= $form->field($model, 'banned')->dropdownlist(['0'=>'ไม่ได้แบนผู้ใช้งาน','1' => 'แบนผู้ใช้งาน',]) ?>
     <div class="form-group">
        <?= Html::submitButton('สร้าง', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
     </div>

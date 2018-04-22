@@ -26,6 +26,7 @@ class User extends \yii\db\ActiveRecord
     public $new_password ;
     public $confirm_password ;
     public $old_password ;
+
     public static function tableName()
     {
         return 'user';
@@ -37,12 +38,11 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at','confirm_password','new_password','old_password'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'password_hash', 'password_reset_token', 'email', 'auth_status','confirm_password','new_password','old_password'], 'string', 'max' => 255],
+            [['username', 'auth_key', 'password_hash', 'created_at', 'updated_at','banned'], 'required'],
+            [['status', 'created_at', 'updated_at','banned'], 'integer'],
+            [['username', 'password_hash', 'password_reset_token', 'auth_status','confirm_password','new_password','old_password'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
-            [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
         ];
     }
@@ -58,7 +58,7 @@ class User extends \yii\db\ActiveRecord
             'auth_key' => 'Auth Key',
             'password_hash' => 'รหัสผ่าน',
             'password_reset_token' => 'Password Reset Token',
-            'email' => 'Email',
+
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -66,6 +66,7 @@ class User extends \yii\db\ActiveRecord
             'old_password' => 'รหัสผ่านเก่า',
             'new_password' => 'รหัสผ่านใหม่',
             'confirm_password' => 'ยืนยันรหัสผ่าน',
+            'banned'=>'สถานนะการงดใช้งาน',
         ];
     }
 }

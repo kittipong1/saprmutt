@@ -35,7 +35,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'created_at',
             // 'updated_at',
              'auth_status',
-
+              ['attribute'=>'banned',
+            'contentOptions' => ['class' => 'text-center'],
+            'headerOptions' => ['class' => 'text-center'],
+            'value'=> function($model){
+               if($model->banned == '0'){
+                return 'ไม่ได้แบนผู้ใช้งาน';
+               }else {
+                return 'ผู้ใช้งานถูกแบน';
+               }
+           }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
