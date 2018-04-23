@@ -72,7 +72,7 @@ class LoginForm extends Model
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
         }
-        if($this->_user['baned']==0){
+        if($this->_user['banned']==0){
             return $this->_user;
         }
     }
