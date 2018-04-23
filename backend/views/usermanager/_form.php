@@ -15,8 +15,13 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     
-
-    <?= $form->field($model, 'new_password')->passwordInput() ?>
+    <?php if($_SERVER['REQUEST_URI'] == '/demo01/admin/index.php/usermanager/create'){
+    	echo $form->field($model, 'password_hash')->passwordInput() ;
+    }else{
+    	echo $form->field($model, 'new_password')->passwordInput() ;		
+    }
+    ?>
+    
 
     <?= $form->field($model, 'auth_status')->dropdownlist(['teacher' => 'อาจารย์','deputy'=>'รองคณะบดีฝ่ายพัฒนานักศึกษา','boss'=>'ประธานหลักสูตร']) ?>
     <?= $form->field($model, 'banned')->dropdownlist(['0'=>'ไม่ได้แบนผู้ใช้งาน','1' => 'แบนผู้ใช้งาน',]) ?>
