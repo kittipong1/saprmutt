@@ -43,11 +43,11 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
         $user = new User();
         $user->username = $this->username;
         $user->auth_status = $this->auth_status;
         $user->setPassword($this->password_hash);
+        $user->banned = $this->banned;
         $user->generateAuthKey();
         
         return $user->save() ? $user : null;

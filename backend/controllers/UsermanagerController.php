@@ -89,7 +89,9 @@ class UsermanagerController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+            $model->banned = (int)$model->banned;
             if ($user = $model->signup()) {
+
             }
             return $this->redirect(['index']);
         }
