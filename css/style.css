@@ -63,11 +63,7 @@ body {
 
 @media screen /*--This is for Screen--*/
 {
-    .btn
-    {
-        background-color: #AFAFAF;
-        display: block;
-    }
+
     .tble
     {
         background-color: #E5E5E5;
@@ -113,7 +109,6 @@ i {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'quarkbold';
-	margin: 0;
 	color: #444;
 }
 

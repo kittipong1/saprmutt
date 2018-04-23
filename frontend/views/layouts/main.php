@@ -114,9 +114,7 @@ Student Activities of RMUTT
                             if(Yii::$app->user->identity->auth_status == 'deputy' || Yii::$app->user->identity->auth_status == 'teacher' || Yii::$app->user->identity->auth_status == 'boss'){
                                 echo '<li>'.Html::a('จัดการข่าวสารของตนเอง',Url::to(['news/mynews']).'?NewsSearch%5Buser_id%5D='.Yii::$app->user->identity->id).'</li>';
                             }
-                               if(Yii::$app->user->identity->auth_status == 'deputy'){
-                                echo '<li>'.Html::a('เพิ่มประเภทข่าวสาร',Url::to(['newstype/index'])).'</li>';
-                            }
+                               
                             if(Yii::$app->user->identity->auth_status == 'deputy'){
                                 echo '<li>'.Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม',Url::to(['joinactivity/index']).'?NewsSearch%5Buser_id%5D='.Yii::$app->user->identity->id).'</li>';
                             }

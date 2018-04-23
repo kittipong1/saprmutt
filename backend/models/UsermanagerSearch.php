@@ -41,7 +41,7 @@ class UsermanagerSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = User::find()->where(['!=','auth_status','admin']);
 
         // add conditions that should always apply here
 

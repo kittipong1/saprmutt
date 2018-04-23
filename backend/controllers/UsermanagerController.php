@@ -110,8 +110,11 @@ class UsermanagerController extends Controller
     {
         $model = $this->findModel($id);
         if ($model->load(Yii::$app->request->post())) {
-            $hashpassword = Yii::$app->security->generatePasswordHash($model->password_hash);
-            $model->password_hash = $hashpassword;
+            if(!empty($model->new_password)){
+               $hashpassword = Yii::$app->security->generatePasswordHash($model->new_password);
+            $model->password_hash = $hashpassword; 
+            }
+            
             if ($model->save()) {
                 $model->save();
             }

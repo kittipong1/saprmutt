@@ -17,7 +17,7 @@ $this->registerJs("
 
     <?php $form = ActiveForm::begin(); ?>
 
-   <?= $form->field($model, 'news_type_id')->dropDownList(ArrayHelper::map(NewsType::find()->orderBy(['news_type_name'=>SORT_ASC])->all(),'news_type_id','news_type_name')) ?>
+   <!-- <?= $form->field($model, 'news_type_id')->dropDownList(ArrayHelper::map(NewsType::find()->orderBy(['news_type_name'=>SORT_ASC])->all(),'news_type_id','news_type_name')) ?> -->
 
     <?= $form->field($model, 'news_name')->textInput(['maxlength' => true]) ?>
 
