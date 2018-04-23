@@ -42,9 +42,14 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
+      
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
-            }
+                $this->addError($attribute, 'ชื่อผู้ใช้งาน หรือรหัสผ่านไม่ถูกต้อง');
+          
+                 
+            }else if($user['banned'] == '1'){
+                 $this->addError($attribute, 'ชื่อผู้ใช้งานนี้ถูกระงับ กรุณาติดต่อผู้ดูแลระบบ');
+                }
         }
     }
 
@@ -71,8 +76,6 @@ class LoginForm extends Model
     {
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
-        }
-        if($this->_user['banned']==0){
             return $this->_user;
         }
     }
