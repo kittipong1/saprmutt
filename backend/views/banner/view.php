@@ -10,12 +10,8 @@ $this->title = $model->ban_id;
 $this->params['breadcrumbs'][] = ['label' => 'Banners', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="box box-primary box-solid">
-    <div class="box-header">
-        <h1 class="box-title"><?= Html::encode($this->title) ?></h1>
-    </div>
 
-    <div class="box-body">
+
     <p>
         <?= Html::a('แก้ไข', ['update', 'id' => $model->ban_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('ลบ', ['delete', 'id' => $model->ban_id], [
@@ -43,5 +39,3 @@ $this->params['breadcrumbs'][] = $this->title;
             'ban_detail:ntext',
         ],
     ]) ?>
-    </div>
-</div>
