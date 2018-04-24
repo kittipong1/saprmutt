@@ -84,7 +84,7 @@ class BannerController extends Controller
             $model->modified_date = date('Y-m-d H:i:s');
 
             $file = UploadedFile::getInstance($model,'banner');
-            if($file->size!=0){
+            if((!empty($file) && $file->size!=0)){
                 $model->ban_image = $file->name;
                 $file->saveAs('../uploads/images/'.$file->name);
             }

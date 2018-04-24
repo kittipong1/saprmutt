@@ -94,7 +94,7 @@ class VdoController extends Controller
             $model->modified_date = date('Y-m-d H:i:s');
             $model->vdo_view = 0;
             $file = UploadedFile::getInstance($model,'vdo_path');
-            if($file->size!=0){
+            if((!empty($file) && $file->size!=0)){
                 $model->path = $file->basename.'.'.$file->extension;
                 $file->saveAs('../uploads/media/'.$file->basename.'.'.$file->extension);
             }

@@ -102,7 +102,7 @@ class NewsController extends Controller
             $model->user_id = Yii::$app->user->identity->id;
 
              $file = UploadedFile::getInstance($model,'news_imagepath');
-            if($file->size!=0){
+            if((!empty($file) && $file->size!=0)){
                 if (!is_dir('./uploads/news/'.$model->news_type_id.'/')) {
                     mkdir("./uploads/news/".$model->news_type_id."/");
                 }
@@ -130,15 +130,19 @@ class NewsController extends Controller
      */
     public function actionUpdate($id)
     {
-        
-
-
         $model = $this->findModel($id);
         if($model->user_id == Yii::$app->user->identity->id){
         if ($model->load(Yii::$app->request->post()) ) {
-            if($model->password == $model->confirm_password){
-            $hashpassword = Yii::$app->security->generatePasswordHash($model->password);
-            $model->password_hash = $hashpassword;
+            $model->modified_date = date('Y-m-d H:i:s');
+            $file = UploadedFile::getInstance($model,'news_imagepath');
+           
+            if((!empty($file) && $file->size!=0)){
+                if (!is_dir('./uploads/news/'.$model->news_type_id.'/')) {
+                    mkdir("./uploads/news/".$model->news_type_id."/");
+                }
+                $model->news_image = $file->basename.'.'.$file->extension;
+                $file->saveAs('./uploads/news/'.$model->news_type_id.'/'.$file->basename.'.'.$file->extension);
+             
             }
             if($model->save()){
                $model->save(); 

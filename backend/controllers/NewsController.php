@@ -88,7 +88,7 @@ class NewsController extends Controller
             $model->active = 'y';
             $model->user_id = 1;
              $file = UploadedFile::getInstance($model,'news_imagepath');
-            if($file->size!=0){
+            if((!empty($file) && $file->size!=0)){
                 $model->news_image = $file->basename.'.'.$file->extension;
                 $file->saveAs('../uploads/news/'.$model->news_type_id.'/'.$file->basename.'.'.$file->extension);
             }

@@ -87,7 +87,7 @@ class ImageController extends Controller
             $model->create_date = date('Y-m-d H:i:s');
             $model->modified_date = date('Y-m-d H:i:s');
             $file = UploadedFile::getInstance($model,'image_path');
-            if($file->size!=0){
+            if((!empty($file) && $file->size!=0)){
                 $model->path = $file->basename.'.'.$file->extension;
                 $file->saveAs('../uploads/images/'.$file->basename.'.'.$file->extension);
             }
@@ -114,7 +114,7 @@ class ImageController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
               $file = UploadedFile::getInstance($model,'image_path');
-             if($file->size!=0){
+             if((!empty($file) && $file->size!=0)){
                 $model->path = $file->basename.'.'.$file->extension;
                 $file->saveAs('../uploads/images/'.$file->basename.'.'.$file->extension);
             }
