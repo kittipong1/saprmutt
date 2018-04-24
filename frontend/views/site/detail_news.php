@@ -2,7 +2,7 @@
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
 use yii\helpers\Html;
-Yii::setAlias('@kmpath', '@web');
+Yii::setAlias('@demo01', '@web');
  ?>
 
 <!doctype html>
@@ -41,13 +41,10 @@ Yii::setAlias('@kmpath', '@web');
 
 
     <!-- Start Content -->
-    <div id="content" class="bg-white">
-      <div class="container">
-        <div class="row sidebar-page">
 
 
           <!-- Page Content -->
-          <div class="col-md-9 blog-box">
+          <div class="col-md-9 page-content">
 
 
 
@@ -64,9 +61,9 @@ Yii::setAlias('@kmpath', '@web');
                 echo'
                   <div class="item">
                   
-                    <a class="lightbox" title="'.$news->news_name.'" href="'.Yii::getAlias('@kmpath').'/uploads/news/'.$news->news_type_id.'/'.$news->news_image.'" data-lightbox-gallery="gallery1">
+                    <a class="lightbox" title="'.$news->news_name.'" href="'.Yii::getAlias('@demo01').'/uploads/news/'.$news->news_type_id.'/'.$news->news_image.'" data-lightbox-gallery="gallery1">
                       <div class="thumb-overlay"><i class="fa fa-arrows-alt"></i></div>
-                      <img alt="" src="'.Yii::getAlias('@kmpath').'/uploads/news/'.$news->news_type_id.'/'.$news->news_image.'" style ="width:848px;height:350px;">
+                      <img alt="" src="'.Yii::getAlias('@demo01').'/uploads/news/'.$news->news_type_id.'/'.$news->news_image.'" style ="width:848px;height:350px;">
                     </a>
                   </div>
                   
@@ -113,14 +110,14 @@ Yii::setAlias('@kmpath', '@web');
 
 
           <!--Sidebar-->
-          <div class="col-md-3 sidebar right-sidebar">
+            <div class="col-md-3 sidebar right-sidebar">
 
             <!-- Popular Posts widget -->
             <div class="tabs-section widget">
 
               <!-- Nav Tabs -->
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#" data-toggle="tab"><i class="fa fa-star"></i>ข่าวยอดนิยม</a></li>
+                <li class="active" style="width: 264px;"><a href="#" data-toggle="tab"><i class="fa fa-star"></i>นักศึกษาที่ ทำกิจกรรมมากที่สุด</a></li>
                 <!-- <span class="pull-right" style="padding: 8px 0px;"><a href="#" class="btn btn-warning btn-sm" title="ดูทั้งหมด"><i class="fa fa-plus"></i></a></span> -->
               </ul>
 
@@ -129,66 +126,36 @@ Yii::setAlias('@kmpath', '@web');
                 <!-- Tab Content 1 -->
                 <div class="tab-pane fade in active">
                   <ul>
+
                     <?php  
-                      for ($x = 0; $x <= 4; $x++) {
+
+                      for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                        <a href="#"><img src="'.Yii::getAlias('@kmpath').'/images/img-news.png" alt="" /></a>
+                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
-                        <h5><a href="#">ชื่อข่าว...</a></h5>
-                        <span><i class="fa fa-calendar"></i> : 29/08/2560</span> <br>
-                        <span><i class="fa fa-eye"></i> : 123 ครั้ง</span>
+                        <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
+                        <span><i class="fa fa-trophy"></i> : '.$topactivitystudent[$x]['counts'].' กิจกรรม</span>
                       </div>
                       <div class="clearfix"></div>
                     </li>';
                       }
                     ?> 
+
                   </ul>
                 </div>
               </div>
               <!-- End Tab Panels -->
-
+             
             </div>
-
-            <!-- Tags Widget -->
-            <div class="tabs-section widget widget-tags">
-
-              <!-- Nav Tabs -->
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#" data-toggle="tab"><i class="fa fa-tag"></i>แท็ก</a></li>
-              </ul>
-
-              <!-- Tab panels -->
-              <div class="tab-content">
-                <!-- Tab Content 1 -->
-                <div class="tab-pane fade in active">
-                  <div class="tagcloud">
-                    <a href="#">แท็ก1</a>
-                    <a href="#">แท็ก2</a>
-                    <a href="#">แท็ก3</a>
-                    <a href="#">แท็ก4</a>
-                    <a href="#">แท็ก5</a>
-                    <a href="#">แท็ก6</a>
-                    <a href="#">แท็ก7</a>
-                    <a href="#">แท็ก8</a>
-                    <a href="#">แท็ก9</a>
-                    <a href="#">แท็ก10</a>
-                    <a href="#">แท็ก11</a>
-                  </div>
-                </div>
-              </div>
-              <!-- End Tab Panels -->
-
-            </div>
-
+           
+          
           </div>
           <!--End sidebar-->
 
 
-        </div>
-      </div>
-    </div>
+
     <!-- End Content -->
 
 

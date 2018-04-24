@@ -22,12 +22,12 @@ Yii::setAlias('@demo01', '@web');
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2>กิจกรรม</h2>
+            <h2>ภาพกิจกรรม</h2>
           </div>
           <div class="col-md-6">
             <ul class="breadcrumbs">
               <li><?= Html::a('หน้าหลัก',Url::to(['site/index'])); ?></li>
-              <li>กิจกรรม</li>
+              <li>ภาพกิจกรรม</li>
             </ul>
           </div>
         </div>
@@ -36,11 +36,8 @@ Yii::setAlias('@demo01', '@web');
     <!-- End Page Banner -->
   
     <!-- Start Content -->
-    <div id="content" class="bg-white">
-      <div class="container">
-        <div class="row sidebar-page">
           <!-- Page Content -->
-          <div class="col-md-9 blog-box">
+          <div class="col-md-9 page-content">
           <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -201,7 +198,7 @@ Yii::setAlias('@demo01', '@web');
                       for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
+                               <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
                         <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
@@ -222,9 +219,9 @@ Yii::setAlias('@demo01', '@web');
           
           </div>
           <!--End sidebar-->
-        </div>
+
       </div>
-    </div>
+
     <!-- End Content -->
 
     <!-- Start Footer Section -->

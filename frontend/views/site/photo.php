@@ -131,7 +131,7 @@ Yii::setAlias('@demo01', '@web');
                       for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
+                               <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
                         <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>

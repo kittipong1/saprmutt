@@ -349,7 +349,14 @@ class SiteController extends Controller
     }
      public function actionNews()
     {
-        return $this->render('news');
+        
+         $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
+        return $this->render('news',[
+        'topactivitystudent'=>$topactivitystudent,]);
     }
 
     public function actionViewvdoupdate()
@@ -416,13 +423,18 @@ class SiteController extends Controller
     }
     public function actionDetail_news($id)
     {
-
+        
+         $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
         $news = News::find()->where(['news_id'=>$id])->one();
         $news->news_view ++;
         $news->save();
         return $this->render('detail_news',[
             'news'=>$news,
-
+            'topactivitystudent'=>$topactivitystudent,
             ]);
     }
      public function actionVideos()

@@ -87,7 +87,7 @@ Yii::setAlias('@demo01', '@web');
                       for ($x = 0; $x <= 4; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/img-gallery-1.png" alt="" /></a>
+                               <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
                         <h5><a href="#">ชื่อนศ...</a></h5>
