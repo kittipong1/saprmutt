@@ -97,24 +97,27 @@ class ActivityController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $str1 = explode('25', $model->act_term);
-            $actall = Activity::find()->where(['fac_id'=>$model->fac_id])->all();
+            $query = "SELECT * FROM `Activity` where `act_id` LIKE '".$model->fac_id.$model->typefac_id.$str1[1]."%' ORDER BY act_id ASC";
+            $actall = Activity::findBySql($query)->all();
             $acta = array();
             foreach ($actall as $key => $value) {
                 $acta = $value;
             }
+      
             $calactid = $acta['act_id'][8]+($acta['act_id'][7]*10)+($acta['act_id'][6]*100);
 
             if($calactid < 10){
                 $calactidl = '00'.($calactid+1);
             }
-            if($calactid < 100 && $calactid > 10){
+            if($calactid < 100 && $calactid >= 10){
                 $calactidl = '0'.($calactid+1);
             }
             if($calactid >= 100){
                 $calactidl = ($calactid+1);
             }
-
+   
             $_act_id = $model->fac_id.$model->typefac_id.$str1[1].$calactidl;
+
             $model->act_id = $_act_id;
             $model->id_username = Yii::$app->user->identity->id;
             $model->status = 'active';
