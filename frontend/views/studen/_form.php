@@ -34,28 +34,14 @@ $this->registerJs($js, View::POS_END, 'my-options');
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'Stu_id')->textInput(['maxlength' => true]) ?>
-
-    <!-- <?= $form->field($model, 'Stu_id_card')->textInput(['maxlength' => true]) ?> -->
     <?= $form->field($model, 'idtitle_id')->dropDownList(ArrayHelper::map(Titlename::find()->all(),'id_titlename','titlename_th'),['prompt' => 'เลือกคำนำหน้าชื่อ']) ?>
-    <!-- <?= $form->field($model, 'Stu_name_en')->textInput(['maxlength' => true]) ?> -->
 
-    <!-- <?= $form->field($model, 'Stu_lastname_en')->textInput(['maxlength' => true]) ?> -->
 
     <?= $form->field($model, 'Stu_name_th')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Stu_lastname_th')->textInput(['maxlength' => true]) ?>
 
-   <!--  <?= $form->field($model,'Stu_birht_day',[
-            'template' => '{label}<div style="display:table;">{input}<span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span></div>'
-        ])->textInput();
-                    ?> -->
-    <!-- <?= $form->field($model, 'Stu_Add')->textarea() ?> -->
-
-    <!-- <?= $form->field($model, 'Stu_mail')->textInput(['maxlength' => true]) ?> -->
-
-    <!-- <?= $form->field($model, 'Stu_phone')->textInput(['maxlength' => true]) ?> -->
+  
 
       <?= $form->field($model, 'Fac_id')->dropDownList(ArrayHelper::map(Faculty::find()->orderBy(['Fac_name'=>SORT_ASC])->all(),'Faculty_id','Fac_name'),['prompt' => 'เลือกคณะ']) ?>
 
@@ -67,12 +53,11 @@ $this->registerJs($js, View::POS_END, 'my-options');
 
 <div class="help-block"></div>
 </div>
-      <!-- <?= $form->field($model, 'major_id')->dropDownList(ArrayHelper::map(Major::find()->orderBy(['major_id'=>SORT_ASC])->all(),'major_id','major_name'),['prompt' => 'เลือกสาขา']) ?> -->
+
       <?= $form->field($model, 'teacher_id')->dropDownList(ArrayHelper::map(Information::find()->where(['not in','user_id',[1]])->orderBy(['information_id'=>SORT_ASC])->all(),'information_id',function ($model) {
         return  $model['name_th'].' '.$model['lastname_th'];
     }),['prompt' => 'เลือกอาจารย์ที่ปรึกษา']) ?>
 
-    <!-- <?= $form->field($model, 'Stu_avatar')->textInput() ?> -->
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'เพิ่ม' : 'แก้ไข', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
