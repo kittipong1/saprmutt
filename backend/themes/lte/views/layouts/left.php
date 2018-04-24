@@ -100,7 +100,7 @@ if(Yii::$app->user->isGuest){
 //             ],
 //             ['label' => 'ปรเภทคลังอัลบัมรูปภาพ', 'icon' => 'file-image-o', 'url' => ['/album']],
  [
-                        'label' => 'การจัดการรูปอัลบัมรูปภาพ',
+                        'label' => 'การจัดการรูปภาพ',
                         'icon' => 'image',
                         'url' => '#',
                         'items' => [
@@ -109,7 +109,7 @@ if(Yii::$app->user->isGuest){
 ],
             
             ],
-            ['label' => 'ปรเภทคลังอัลบัมรูปภาพ', 'icon' => 'file-image-o', 'url' => ['/album']],
+            ['label' => 'จัดการอัลบั้มภาพ', 'icon' => 'file-image-o', 'url' => ['/album']],
 
            
 

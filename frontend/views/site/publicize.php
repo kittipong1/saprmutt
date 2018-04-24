@@ -124,16 +124,35 @@ Yii::setAlias('@demo01', '@web');
               <div class="hr1" style="margin-bottom:30px;"></div>
 
               <!-- Start Pagination -->
-             <div id="pagination">
             <?php 
-            $pagemax = ceil($countnews/10);
+            $pagemax = ceil($countnews/6);
+
             ?>
-              <span class="all-pages">Page <?=$page?> of <?=$pagemax;?>  </span>
-              <span class="current page-num"><?=$page?></span>
-              <?php for ($i=1; $i < $pagemax+1 ; $i++) { 
-                 echo Html::a($i,Url::to(['site/publicize/?id='.$i])); 
-              } ?>
-            </div>
+                <ul class="pagination">
+              <?php 
+                 $prev = $page-1 ;
+               if($page==1 ){
+                  $disabled = 'disabled';
+                   echo '<li class="prev '.$disabled.'">'.Html::a('«','#').'</li>';  
+                }else{
+                 echo '<li class="prev">'.Html::a('«',Url::to(['site/gallery/?id='.$prev.'&photo=1'])).'</li>';  
+                }
+              for ($i=1; $i < $pagemax+1 ; $i++) { 
+                 if($page == $i){
+                      $active = 'active';
+                      echo '<li class="'.$active.'">'.Html::a($i,Url::to(['site/gallery/?id='.$i.'&photo=1'])).'</li>'; 
+                    }else{
+                      echo '<li class="">'.Html::a($i,Url::to(['site/gallery/?id='.$i.'&photo=1'])).'</li>'; 
+                    }
+                 
+              }
+              $next = $page +1 ;
+              if($page == $pagemax){
+                echo ' <li class="next disabled"><span>»</span></li></ul>';
+              }else{
+                echo '<li class="next">'.Html::a('»',Url::to(['site/gallery/?id='.$next.'&photo=1'])).'</li></ul>';
+              } 
+               ?>
               <!-- End Pagination -->
 
           </div>

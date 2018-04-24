@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn','header'=>'ลำดับ'],
 
@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'user_id',
             //'about_description:ntext',
             'create_date',
+       
             'midified_date',
             // 'about_view',
 

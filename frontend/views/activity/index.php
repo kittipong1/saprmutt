@@ -20,8 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php if(Yii::$app->user->identity->auth_status=='deputy' || Yii::$app->user->identity->auth_status=='boss' || Yii::$app->user->identity->auth_status=='teacher'){
             echo Html::a('เพิ่ม กิจกรรม', ['create'], ['class' => 'btn btn-success']);
-        }?>
-         <?= Html::a('รีเช็ตการค้นหา', ['activity/index'], ['class' => 'btn btn-primary']) ?>
+        }?><!-- 
+         <?= Html::a('รีเช็ตการค้นหา', ['activity/index'], ['class' => 'btn btn-primary']) ?> -->
     </p>
     <?= GridView::widget([
          'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',

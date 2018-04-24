@@ -8,7 +8,7 @@ use backend\models\album;
 /* @var $searchModel backend\models\imagesearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 Yii::setAlias('@demo01', '@web');
-$this->title = 'Images';
+$this->title = 'รูปภาพ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="image-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Image', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม รูปภาพ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',

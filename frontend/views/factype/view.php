@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fac-type-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('แก้ไข', ['update', 'id' => $model->id_type], ['class' => 'btn btn-primary']) ?>

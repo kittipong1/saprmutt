@@ -29,11 +29,7 @@ class AboutController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['index', 'create','update','view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
+                    
                 ],
             ],
             'verbs' => [

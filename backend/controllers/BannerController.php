@@ -25,13 +25,8 @@ class BannerController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    [
-                        'actions' => ['index', 'create','update','view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['index', 'create','update','view'],
+                     [
+                        'actions' => ['index', 'create','update','view','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

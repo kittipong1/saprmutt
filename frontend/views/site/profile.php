@@ -33,16 +33,16 @@ Yii::setAlias('@demo01', '@web');
           <?php 
 
           if(is_null($profile['avatar'])){ ?>
-     			<img data-src="#" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png" style="border-radius: 20%;">
+     			<img data-src="#" src="http://icons.iconarchive.com/icons/papirusteam/papirus-status/512/avatar-default-icon.png " style="border-radius: 20%;">
           <?php }else{ ?>
           <img data-src="#" src="<?=Yii::getAlias('@demo01').'/uploads/information/'.$profile->avatar?>" style="border-radius: 20%;">
           <?php } ?>
      		<?=Yii::$app->user->identity->username ?>
      		</a>
      		<div>
-     		<a href="<?=Url::to(['site/profileedit']) ?>" >แก้ไขรูป Avatar</a>
+     		<a href="<?=Url::to(['site/profileedit']) ?>" >แก้ไขรูปโปรไฟล์</a>
    			<br><br>
-     		<a href="<?=Url::to(['site/editpassword'])?>" >แก้ไข Password</a>
+     		<a href="<?=Url::to(['site/editpassword'])?>" >แก้ไขรหัสผ่าน</a>
      		</div>
      		
      	</div>
@@ -95,10 +95,10 @@ Yii::setAlias('@demo01', '@web');
                         echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
                         echo'<li>'.Html::a('ชื่อผู้ใช้ : '.Yii::$app->user->identity->username,'#').'</li>';
-                        echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว',Url::to(['site/profileedit'])).'
-                            <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['checkstudentbyteacher/index'])).'</li>';
+                        echo'<li>'.Html::a('แก้ไขข้อมูลส่วนตัว',Url::to(['site/profileedit'])).'</li>';
                           if(Yii::$app->user->identity->auth_status !== 'admin'){
-                            echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['viewjoinbyme/index'])).'</li>';
+                            echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมที่ตนเองสร้าง',Url::to(['viewjoinbyme/index'])).'</li>
+                            <li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในที่ปรึกษา',Url::to(['checkstudentbyteacher/index'])).'</li>';
                           }
                           if(Yii::$app->user->identity->auth_status == 'boss'){
                             echo'<li>'.Html::a('ตรวจสอบการเข้าร่วมกิจกรรมในหลักสูตร',Url::to(['checkstudentbymajor/index'])).'</li>';

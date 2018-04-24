@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\albumsearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Albums';
+$this->title = 'อัลบั้มภาพ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="album-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Album', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม อัลบั้มภาพ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',

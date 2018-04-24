@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\FactypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Fac Types';
+$this->title = 'ประเภทกิจกรรม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fac-type-index" style="min-height: 1000px;">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Fac Type', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม ประเภทกิจกรรม', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',

@@ -54,14 +54,14 @@ class Image extends \yii\db\ActiveRecord
     {
         return [
             'image_id' => 'Image ID',
-            'image_name' => 'Image Name',
+            'image_name' => 'ชื่อรูปภาพ',
             'image' => 'Image',
             'path' => 'รูปภาพ',
             'ref_id' => 'อัลบั้มรูปภาพ',
             'sorting' => 'การเรียงลำดับรูปภาพ',
-            'status' => 'Status',
+            'status' => 'สถานะ',
             'create_date' => 'Create Date',
-            'modified_date' => 'Modified Date',
+            'modified_date' => 'วันที่แก้ไขล่าสุด',
             'image_path' => 'ที่อยู่ของรูปภาพ',
         ];
     }

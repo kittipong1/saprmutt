@@ -10,16 +10,15 @@ use yii\grid\GridView;
 $this->title = 'ป้ายประชาสัมพันธ์';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="box box-primary box-solid">
 
-    <div class="box-header">
+  
         <h1 class="box-title"><?= Html::encode($this->title) ?></h1>
-    </div>
+    
 
-    <div class="box-body">
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
-        <?= Html::a('Create Banner', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่ม ป้ายประชาสัมพันธ์', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'summary'=>'รายการที่ {begin} - {end} จาก {totalCount} รายการ', 'emptyText' => 'ไม่พบข้อมูล',
@@ -35,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
               }
             ],
 
-            'ban_id',
+            //'ban_id',
             //'user_id',
             'ban_name',
             'ban_link:ntext',
@@ -50,5 +49,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    </div>
-</div>
+
+

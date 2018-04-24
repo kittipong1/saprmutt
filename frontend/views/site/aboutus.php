@@ -49,7 +49,6 @@ use yii\helpers\Html;
           <div class="col-md-9 page-content">
 
             <!-- Classic Heading -->
-            <h4 class="classic-title"><span>กองพัฒนานักศึกษา</span></h4>
 
             <!-- Some Text -->
             <p>

@@ -29,15 +29,11 @@ class ImageController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'create','update','view'],
+                        'actions' => ['index', 'create','update','view','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['index', 'create','update','view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
+                  
                 ],
             ],
             'verbs' => [
@@ -116,8 +112,17 @@ class ImageController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->image_id]);
+        if ($model->load(Yii::$app->request->post())) {
+              $file = UploadedFile::getInstance($model,'image_path');
+             if($file->size!=0){
+                $model->path = $file->basename.'.'.$file->extension;
+                $file->saveAs('../uploads/images/'.$file->basename.'.'.$file->extension);
+            }
+            $model->modified_date = date('Y-m-d H:i:s');
+            if($model->save()){
+                $model->save();
+            }
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

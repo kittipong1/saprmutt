@@ -5,14 +5,13 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\image */
-
+Yii::setAlias('@demo01', '@web');
 $this->title = $model->image_id;
 $this->params['breadcrumbs'][] = ['label' => 'Images', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="image-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('แก้ไข', ['update', 'id' => $model->image_id], ['class' => 'btn btn-primary']) ?>
@@ -28,12 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'image_id',
-            'image_name',
-            'image',
-            'path:ntext',
+        
+       
+            
             'ref_id',
-            'sorting',
+            'image_name',
+             ['attribute'=>'path',
+            'headerOptions' => ['class' => 'text-center'],
+            'format'=>'html',
+            'value'=> function($model){
+                if($model->path!=''){
+                    return '<img src="'.Yii::getAlias('@demo01').'../../uploads/images/'.$model->path.'" style="width: 200px;height: 200px;">';
+                }
+            }],
             'status',
             'create_date',
             'modified_date',

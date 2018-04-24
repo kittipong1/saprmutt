@@ -58,15 +58,6 @@ class aboutsearch extends About
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'about_id' => $this->about_id,
-            'user_id' => $this->user_id,
-            'create_date' => $this->create_date,
-            'midified_date' => $this->midified_date,
-            'about_view' => $this->about_view,
-        ]);
-
-        $query->andFilterWhere(['like', 'about_description', $this->about_description]);
 
         return $dataProvider;
     }

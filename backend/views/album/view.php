@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\Faculty;
 /* @var $this yii\web\View */
 /* @var $model app\models\album */
 
@@ -11,8 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Albums', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="album-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('แก้ไข', ['update', 'id' => $model->album_id], ['class' => 'btn btn-primary']) ?>
@@ -33,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'album_name:ntext',
             'create_date',
             'modified_date',
-            'album_view',
+            //'album_view',
             'album_agencies:ntext',
         ],
     ]) ?>

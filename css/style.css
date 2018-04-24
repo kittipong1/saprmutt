@@ -474,7 +474,7 @@ header{
 }
 
 .top-bar {
-	background-color: #444;
+	background-color: #102e72;
 	/*border-bottom: 1px solid #f2f2f2;*/
 }
 
@@ -1103,6 +1103,7 @@ ul.breadcrumbs {
 
 .no-subtitle ul.breadcrumbs {
 	margin-top: 4px;
+	padding-right: 30px;
 }
 
 ul.breadcrumbs li {
@@ -4278,9 +4279,9 @@ ul.post-meta li, ul.post-meta li a {
 /*------------------------------------------*/
 
 footer {
-	background-color: #222;
+	background-color: #102e72;
     padding-top: 35px;
-	border-top: 4px solid #555;
+	border-top: 4px solid #102e72;
 	color: #ccc;
 }
 

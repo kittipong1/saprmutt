@@ -62,11 +62,11 @@ class User extends \yii\db\ActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'auth_status' => 'Status User',
+            'auth_status' => 'ระดับของผู้ใช้งาน',
             'old_password' => 'รหัสผ่านเก่า',
             'new_password' => 'รหัสผ่านใหม่',
             'confirm_password' => 'ยืนยันรหัสผ่าน',
-            'banned'=>'สถานนะการงดใช้งาน',
+            'banned'=>'สถานะการงดใช้งาน',
         ];
     }
 }

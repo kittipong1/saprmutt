@@ -5,9 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\image */
 
-$this->title = 'Update Image: ' . $model->image_id;
-$this->params['breadcrumbs'][] = ['label' => 'Images', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->image_id, 'url' => ['view', 'id' => $model->image_id]];
+$this->title = 'แก้ไข รูปภาพ';
+
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="image-update">

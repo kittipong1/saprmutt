@@ -18,9 +18,8 @@ use app\models\faculty;
   <!-- Full Body Container -->
   <div id="container">
      <div style="margin-top: 30px;">
-          <div class="container">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-9">
 
                 <!-- News Slider -->
                 <div class="row">
@@ -177,7 +176,7 @@ use app\models\faculty;
 
                   <!-- Nav Tabs -->
                   <ul class="nav nav-tabs">
-                    <li class="active"><a href="#" data-toggle="tab"><i class="fa fa-newspaper-o"></i>ข่าวประชาสัมพันธ์</a></li>
+                    <li class="active"><a href="#" data-toggle="tab"><i class="fa fa-newspaper-o"></i>ข่าวสาร</a></li>
                     <span class="pull-right" style="padding: 8px 0px;"><?= Html::a('ดูทั้งหมด <i class="fa fa-plus"></i>',Url::to(['site/publicize']),$options = ['class'=>'btn btn-warning btn-sm']); ?></span>
                   </ul>
 

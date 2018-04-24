@@ -45,9 +45,9 @@ class About extends \yii\db\ActiveRecord
         return [
             'about_id' => 'About ID',
             'user_id' => 'id ของคนที่สร้าง (admin)',
-            'about_description' => 'About Description',
-            'create_date' => 'Create Date',
-            'midified_date' => 'Midified Date',
+            'about_description' => 'รายละเอียด',
+            'create_date' => 'วันที่สร้าง',
+            'midified_date' => 'วันที่แก้ไขล่าสุด',
             'about_view' => 'About View',
         ];
     }
