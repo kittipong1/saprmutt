@@ -86,10 +86,12 @@ Student Activities of RMUTT
                         echo'<li>'.Html::a('เข้าสู่ระบบ',Url::to(['site/login'])).'</li>';
                     }else{ 
                         echo'<li>'.Html::a('เมนู <i class="fa fa-caret-down"></i>','#').'<ul class="dropdown">
-                            <li>'.Html::a('ข้อมูลส่วนตัว',Url::to(['site/profile'])).'</li>
-                            <li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li>';
+                            <li>'.Html::a('ข้อมูลส่วนตัว',Url::to(['site/profile'])).'</li>';
                             if(Yii::$app->user->identity->auth_status == 'deputy' || Yii::$app->user->identity->auth_status == 'teacher' || Yii::$app->user->identity->auth_status == 'boss'){
+                                echo '<li>'.Html::a('จัดการกิจกรรม',Url::to(['activity/index'])).'</li>';
                                 echo '<li>'.Html::a('จัดการกิจกรรมที่ตนเองสร้าง',Url::to(['myactivity/index'])).'</li>';
+
+                          
                             }
                             if(Yii::$app->user->identity->auth_status == 'admin'){
                                 echo '<li>'.Html::a('เพิ่มรายชื่อนักศึกษา',Url::to(['studen/index'])).'</li>';

@@ -14,12 +14,12 @@ Yii::setAlias('@demo01', '@web');
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2>profile</h2>
+            <h2>โปรไฟล์</h2>
           </div>
           <div class="col-md-6">
             <ul class="breadcrumbs">
               <li><?= Html::a('หน้าหลัก',Url::to(['site/index'])); ?></li>
-              <li>profile</li>
+              <li>โปรไฟล์</li>
             </ul>
           </div>
         </div>
@@ -33,7 +33,7 @@ Yii::setAlias('@demo01', '@web');
           <?php 
 
           if(is_null($profile['avatar'])){ ?>
-     			<img data-src="#" src="http://icons.iconarchive.com/icons/papirusteam/papirus-status/512/avatar-default-icon.png " style="border-radius: 20%;">
+     			<img data-src="#" src="http://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png" style="border-radius: 20%;">
           <?php }else{ ?>
           <img data-src="#" src="<?=Yii::getAlias('@demo01').'/uploads/information/'.$profile->avatar?>" style="border-radius: 20%;">
           <?php } ?>

@@ -17,7 +17,7 @@ Yii::setAlias('@demo01', '@web');
     <!-- Start Header Section -->
 
     <!-- End Header Section -->
-
+    
 
     <!-- Start Page Banner -->
     <div class="page-banner no-subtitle">
@@ -36,12 +36,13 @@ Yii::setAlias('@demo01', '@web');
       </div>
     </div>
     <!-- End Page Banner -->
-
+  <ul class="nav nav-tabs" role="tablist">
+   
+              <li role="presentation" class="active"><a href="#photo" aria-controls="profile" role="tab" data-toggle="tab">คลังรูปภาพ</a></li>
+            </ul>
 
     <!-- Start Content -->
-    <div id="content" class="bg-white">
-      <div class="container">
-        <div class="row sidebar-page">
+
 
 
           <!-- Page Content -->
@@ -154,9 +155,6 @@ Yii::setAlias('@demo01', '@web');
           <!--End sidebar-->
 
 
-        </div>
-      </div>
-    </div>
     <!-- End Content -->
 
 
