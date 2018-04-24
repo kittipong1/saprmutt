@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'album_name',
             'create_date',
             //'modified_date',
-            'album_view',
+            //'album_view',
             'album_agencies',
 
             ['class' => 'yii\grid\ActionColumn'],
