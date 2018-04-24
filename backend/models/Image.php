@@ -60,7 +60,7 @@ class Image extends \yii\db\ActiveRecord
             'ref_id' => 'อัลบั้มรูปภาพ',
             'sorting' => 'การเรียงลำดับรูปภาพ',
             'status' => 'สถานะ',
-            'create_date' => 'Create Date',
+            'create_date' => 'วันที่สร้าง',
             'modified_date' => 'วันที่แก้ไขล่าสุด',
             'image_path' => 'ที่อยู่ของรูปภาพ',
         ];

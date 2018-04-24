@@ -60,8 +60,8 @@ class User extends \yii\db\ActiveRecord
             'password_reset_token' => 'Password Reset Token',
 
             'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => 'วันที่าสร้าง',
+            'updated_at' => 'วันที่แก้ไข',
             'auth_status' => 'ระดับของผู้ใช้งาน',
             'old_password' => 'รหัสผ่านเก่า',
             'new_password' => 'รหัสผ่านใหม่',
