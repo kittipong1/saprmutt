@@ -155,8 +155,12 @@ class SiteController extends Controller
         return $this->render('viewactivity',['data'=>$data,'typename'=>$typename,'join'=>$join]);
     }
     public function actionActivitychart(){
-    
-        return $this->render('activitychart');
+      $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
+        return $this->render('activitychart',['topactivitystudent'=>$topactivitystudent]);
     }
     public function actionChartofactivity(){
     
