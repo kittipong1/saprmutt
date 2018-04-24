@@ -257,10 +257,10 @@ class SiteController extends Controller
         $student_id = $_POST['student_id'];
         $student = Studen::find()->where(['Stu_id'=>$student_id])->with('faculty')->with('major')->with('title')->one();
         if(!empty($student)){
-        $activity1 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','00%',false])->with('activity')->all();
+        $activity1 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','00%',false])->andWhere(['NOT LIKE', 'id_actitaty','0007%',false])->with('activity')->all();
         $activity2 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty',$student->faculty->Fac_key.'%',false])->with('activity')->all();
-        $activity3 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','20%',false])->with('activity')->all();
-        $activity4 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','21%',false])->with('activity')->all();
+        $activity3 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','0007%',false])->andWhere(['like', 'id_actitaty',$student->faculty->Fac_key.'07%',false])->with('activity')->all();
+        $activity4 = joinactivity::find()->where(['studennumber'=>$student_id])->andWhere(['like', 'id_actitaty','14%',false])->with('activity')->all();
         $countallactivity = count($activity3)+count($activity2)+count($activity1);
         $countactivity4 = count($activity4);
         if(count($activity1) > 5 && count($activity2) > 3 && count($activity3) > 1 && count($activity4) > 0){

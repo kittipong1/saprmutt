@@ -4222,8 +4222,8 @@ ul.post-meta li, ul.post-meta li a {
 }
 
 .sidebar .widget-popular-posts .widget-thumb img {
-	width: 65px;
-	height: 65px;
+	width: 34px;
+	height: 34px;
 	object-fit: cover;
 	opacity: 1;
 	transition: all 0.2s ease-in-out;
