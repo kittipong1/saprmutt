@@ -58,7 +58,7 @@ class SignupForm extends Model
             'username' => 'ชื่อผู้ใช้',
             'password_hash'=>'รหัสผ่าน',
             'auth_status' => 'ระดับของผู้ใช้',
-            'banned'=>'สถานนะการงดใช้งาน',
+            'banned'=>'สถานะการงดใช้งาน',
         ];
     }
 }
