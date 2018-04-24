@@ -15,7 +15,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     
-    <?php if($_SERVER['REQUEST_URI'] == '/demo01/admin/index.php/usermanager/create'){
+    <?php 
+
+    $str = explode('/', $_SERVER['REQUEST_URI']);
+    if($str[5] == 'create'){
     	echo $form->field($model, 'password_hash')->passwordInput() ;
     }else{
     	echo $form->field($model, 'new_password')->passwordInput() ;		
