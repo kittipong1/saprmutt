@@ -109,11 +109,10 @@ class ActivityController extends Controller
             else {
                 $calactid = 0;
             }
-
-            if($calactid < 10){
+            if($calactid < 9){
                 $calactidl = '00'.($calactid+1);
             }
-            if($calactid < 100 && $calactid >= 10){
+            if($calactid < 100 && $calactid >= 9){
                 $calactidl = '0'.($calactid+1);
             }
             if($calactid >= 100){
