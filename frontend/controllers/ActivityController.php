@@ -103,8 +103,12 @@ class ActivityController extends Controller
             foreach ($actall as $key => $value) {
                 $acta = $value;
             }
-      
-            $calactid = $acta['act_id'][8]+($acta['act_id'][7]*10)+($acta['act_id'][6]*100);
+             if($acta){
+                $calactid = $acta['act_id'][8]+($acta['act_id'][7]*10)+($acta['act_id'][6]*100);
+            }
+            else {
+                $calactid = 0;
+            }
 
             if($calactid < 10){
                 $calactidl = '00'.($calactid+1);
