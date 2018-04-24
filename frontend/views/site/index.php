@@ -374,6 +374,7 @@ use app\models\faculty;
                 </div>
               </div>
               <!-- End Tab Panels -->
+              <br>
               <form action="<?=Url::to(['site/studentactivity']) ?>" method="POST" role="form">
                 <legend>ค้นหาข้อมูลกิจกรรมนักศึกษา</legend>
                 <div class="input-group">

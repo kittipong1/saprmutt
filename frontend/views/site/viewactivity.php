@@ -54,7 +54,7 @@ Yii::setAlias('@demo01', '@web');
                                     <tbody>
                                       <?php 
                                       foreach ($data as $key => $value) {
-                                        $order = $key + 1 ;   
+                                        $order = (($page-1)*20)+ 1 + $key ;   
                                         echo '<tr><td style="text-align: center;">'.$order.'</td>
                                               <td style="text-align: center;">'.$value['act_id'].'</td>'.
                                               '<td style="text-align: center;">'.$value['act_name'].'</td>
@@ -72,8 +72,37 @@ Yii::setAlias('@demo01', '@web');
                                    
 								  	
                                     </tbody>
+                                       
                                   </table>
-                       
+                         <?php 
+            $pagemax = ceil($countdata/20);
+
+            ?>
+                <ul class="pagination">
+              <?php 
+                 $prev = $page-1 ;
+               if($page==1 ){
+                  $disabled = 'disabled';
+                   echo '<li class="prev '.$disabled.'">'.Html::a('«','#').'</li>';  
+                }else{
+                 echo '<li class="prev">'.Html::a('«',Url::to(['site/viewactivity/?id='.$prev.'&fac_id='.$fac_id])).'</li>';  
+                }
+              for ($i=1; $i < $pagemax+1 ; $i++) { 
+                 if($page == $i){
+                      $active = 'active';
+                      echo '<li class="'.$active.'">'.Html::a($i,Url::to(['site/viewactivity/?id='.$i.'&fac_id='.$fac_id])).'</li>'; 
+                    }else{
+                      echo '<li class="">'.Html::a($i,Url::to(['site/viewactivity/?id='.$i.'&fac_id='.$fac_id])).'</li>'; 
+                    }
+                 
+              }
+              $next = $page +1 ;
+              if($page == $pagemax){
+                echo ' <li class="next disabled"><span>»</span></li></ul>';
+              }else{
+                echo '<li class="next">'.Html::a('»',Url::to(['site/viewactivity/?id='.$next.'&fac_id='.$fac_id])).'</li></ul>';
+              } 
+               ?>
                         </div>
                         </div>
                         </div>

@@ -142,17 +142,31 @@ class SiteController extends Controller
 
         return $this->render('activity',['data'=>$data,'topactivitystudent'=>$topactivitystudent]);
     }
-    public function actionViewactivity(){
+    public function actionViewactivity($id=null,$fac_id=null){
     if(isset($_GET['fac_id'])) {
+
         $fac_id =  $_GET['fac_id'];
-        $data = activity::find()->where(['fac_id'=>$fac_id])->all();
+           if(empty($id)){
+            $id=1;
+        }
+        $page =$id ;
+        $limit = ($page-1)*20 ;
+        $data = activity::find()->where(['fac_id'=>$fac_id])->limit(20)->offset($limit)->all();
         foreach ($data as $key => $value) {
              $typename[$key] = FacType::find(['id_type'=>$value->typefac_id])->one();
              $join[$key] = joinactivity::find()->where(['id_actitaty'=>$value->act_id])->count();
         }
-       
+        $dataall = activity::find()->where(['fac_id'=>$fac_id])->all();
+        $a = count($dataall);
     } 
-        return $this->render('viewactivity',['data'=>$data,'typename'=>$typename,'join'=>$join]);
+        return $this->render('viewactivity',[
+            'data'=>$data,
+            'typename'=>$typename,
+            'join'=>$join,
+            'page'=>$page,
+            'countdata'=>$a,
+            'fac_id'=>$fac_id
+        ]);
     }
     public function actionActivitychart(){
       $topactivitystudentsql = new Query;
@@ -323,6 +337,7 @@ class SiteController extends Controller
         if(empty($id)){$id = 1;}
         if($photo==1){$photos = 'active';}else {$photos = '';}
         if($video==1){$videos = 'active';}else {$videos = '';}
+
         $page =$id ;
         $limit = ($page-1)*6 ;
         $albumall = album::find()->limit(6)->offset($limit)->all();
@@ -404,6 +419,11 @@ class SiteController extends Controller
 
      public function actionPublicize($id=null)
     {
+         $topactivitystudentsql = new Query;
+        $topactivitystudentsql->select(['COUNT(id_actitaty) AS counts','studen.Stu_name_th',
+    'studen.Stu_lastname_th'])->from('joinactivity')->join('LEFT JOIN','studen','studen.Stu_id = joinactivity.studennumber')->groupBy('studennumber')->orderBy(['counts' => SORT_DESC])->all(); 
+        $command = $topactivitystudentsql->createCommand();
+        $topactivitystudent = $command->queryAll();
         if(empty($id)){
             $id=1;
         }
@@ -423,6 +443,7 @@ class SiteController extends Controller
             'news'=>$news,
             'page'=>$page,
             'countnews'=>$a,
+            'topactivitystudent'=>$topactivitystudent,
             ]);
     }
     public function actionDetail_news($id)

@@ -28,12 +28,12 @@ Yii::setAlias('@demo01', '@web');
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2>ข่าวประชาสัมพันธ์</h2>
+            <h2>ข่าวสาร</h2>
           </div>
           <div class="col-md-6">
             <ul class="breadcrumbs">
               <li><?= Html::a('หน้าหลัก',Url::to(['site/index'])); ?></li>
-              <li>ข่าวประชาสัมพันธ์</li>
+              <li>ข่าวสาร</li>
             </ul>
           </div>
         </div>
@@ -175,15 +175,16 @@ Yii::setAlias('@demo01', '@web');
                 <div class="tab-pane fade in active">
                   <ul>
 
-                    <?php  
-                      for ($x = 0; $x <= 4; $x++) {
+                   <?php  
+
+                      for ($x = 0; $x <= 2; $x++) {
                         echo '<li>
                       <div class="widget-thumb">
-                               <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
+                        <a href="#"><img src=" '.Yii::getAlias('@demo01').'/images/trophy'.$x.'.png" alt="" /></a>
                       </div>
                       <div class="widget-content">
-                        <h5><a href="#">ชื่อนศ...</a></h5>
-                        <span><i class="fa fa-trophy"></i> : 123 กิจกรรม</span>
+                        <h5><a href="#">'.$topactivitystudent[$x]['Stu_name_th'].' '.$topactivitystudent[$x]['Stu_lastname_th'].'</a></h5>
+                        <span><i class="fa fa-trophy"></i> : '.$topactivitystudent[$x]['counts'].' กิจกรรม</span>
                       </div>
                       <div class="clearfix"></div>
                     </li>';
