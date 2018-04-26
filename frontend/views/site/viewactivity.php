@@ -54,15 +54,17 @@ Yii::setAlias('@demo01', '@web');
                                     <tbody>
                                       <?php 
                                       foreach ($data as $key => $value) {
-                                        $order = (($page-1)*20)+ 1 + $key ;   
+                                        $order = (($page-1)*20)+ 1 + $key ;  
+                                        $SnewDate = date("d-m-Y", strtotime($value["act_sday"]));
+                                        $EnewDate = date("d-m-Y", strtotime($value["act_eday"])); 
                                         echo '<tr><td style="text-align: center;">'.$order.'</td>
                                               <td style="text-align: center;">'.$value['act_id'].'</td>'.
                                               '<td style="text-align: center;">'.$value['act_name'].'</td>
                                             <td style="text-align: center;">'.$typename[$key]['type_name'].'</td>
                                             <td style="text-align: center;">'.$value['act_term'].'</td>
-                                            <td style="text-align: center;">'.$value['act_sday'];
-                                            if($value['act_eday']!==$value['act_sday']){
-                                              echo ' - <br> '.$value['act_eday'];
+                                            <td style="text-align: center;">'.$SnewDate;
+                                            if($EnewDate!==$SnewDate){
+                                              echo ' - <br> '.$EnewDate;
                                             }
                                          echo '</td>
                                             <td style="text-align: center;">'.$join[$key].'</td>

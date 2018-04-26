@@ -111,8 +111,10 @@ use app\models\faculty;
                                         <td style="text-align: center;"><?=$value["act_name"]?></td>
                                         <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
                                         echo $faculty->Fac_name;
+                                        $SnewDate = date("d-m-Y", strtotime($value["act_sday"]));
+                                        $EnewDate = date("d-m-Y", strtotime($value["act_eday"]));
                                         ?></td>
-                                        <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
+                                        <td><?=$SnewDate?><?php if($SnewDate!==$EnewDate)echo' - '.$EnewDate;?></td>
                                       </tr>
                                     <?php  }}} ?>
                                     </tbody>
@@ -157,8 +159,10 @@ use app\models\faculty;
                                         <td style="text-align: center;"><?=$value["act_name"]?></td>
                                         <td><?php  $faculty = faculty::find()->where(['Fac_key'=>$value["fac_id"]])->one();
                                         echo $faculty->Fac_name;
+                                       $SnewDate = date("d-m-Y", strtotime($value["act_sday"]));
+                                        $EnewDate = date("d-m-Y", strtotime($value["act_eday"]));
                                         ?></td>
-                                        <td><?=$value["act_sday"]?><?php if($value["act_sday"]!==$value["act_eday"])echo' - '.$value["act_eday"];?></td>
+                                        <td><?=$SnewDate?><?php if($SnewDate!==$EnewDate)echo' - '.$EnewDate;?></td>
                                       </tr>
                                     <?php    }}} ?>
                                     </tbody>

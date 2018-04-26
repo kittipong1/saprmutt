@@ -10,41 +10,15 @@ $this->registerJs("
     $(function () {
     CKEDITOR.replace('activity-act_comment')
     })
-    
-    $('#banner-start_date').datepicker({
-      autoclose: true
-    });
-     $(function () {
-    CKEDITOR.replace('news-news_description')
-    })
-    $('#banner-end_date').datepicker({
-      autoclose: true
-    });
 
-    var input1 = 'input[name =\"Banner[ban_link]\"]';
-      setHideInput(3,$(input1).val(),'#banner-ban_link');
-      $(input1).click(function(val){
-        setHideInput(3,$(this).val(),'#banner-ban_link');
-      });
+   $('.input-daterange').datepicker({
+    todayBtn: 'linked',
+    language: 'th',
+    autoclose: true
+});
 
-    var input2 = 'input[name=\"Banner[ban_name]\"]';
-      setHideInput(1,$(input2).val(),'#cke_banner-ban_detail');
-      $(input2).click(function(val){
-        setHideInput(1,$(this).val(),'#cke_banner-ban_detail');
-      });
 
-    function setHideInput(set,value,objTarget)
-  {
-    console.log(set+'='+value);
-      if(set==value)
-      {
-        $(objTarget).show(500);
-      }
-      else
-      {
-        $(objTarget).hide(500);
-      }
-  }
+   
 
     ", View::POS_END, 'my-options');
 ?>
@@ -61,12 +35,12 @@ $this->registerJs("
     <?= $form->field($model, 'fac_id')->dropDownList(ArrayHelper::map(Faculty::find()->orderBy(['Fac_name'=>SORT_ASC])->all(),'Fac_key','Fac_name')) ?>
 
     <?php 
-    for ($i = 0; $i < 10 ; $i++) {
-      $ba = $i+2555;
+    for ($i = 0; $i < 20 ; $i++) {
+      $ba = $i+date("Y")+533;
       $a[$ba] = $ba ;
     }
     echo $form->field($model, 'act_term')->dropDownList($a); ?>
-
+    <div class="input-daterange input-group" id="datepicker" style="width: 100%;">
         <div class='col-md-6'>
             <div class="form-group">
                 <div class='input-group date' id='banner-start_date'>
@@ -94,7 +68,7 @@ $this->registerJs("
                 </div>
             </div>
         </div>
-
+    </div>
     <?= $form->field($model, 'act_comment')->textarea(['rows' => 6]) ?>
     <?php if(Yii::$app->user->identity->auth_status == 'deputy') { ?>
        <?= $form->field($model, 'status')->dropDownList(['active'=>'active','disable'=>'disable']) ?>

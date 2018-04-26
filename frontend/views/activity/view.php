@@ -40,8 +40,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $ref_idname->type_name;
             }],
             'act_term',
-            'act_sday',
-            'act_eday',
+              ['attribute'=>'act_sday',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->act_sday));
+                return $return;
+            },],
+              ['attribute'=>'act_eday',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->act_eday));
+                return $return;
+            },],
             'act_comment:ntext',
             'status',
              ['attribute'=>'id_username',

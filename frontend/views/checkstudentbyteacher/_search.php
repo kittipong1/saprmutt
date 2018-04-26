@@ -25,25 +25,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Stu_name_en') ?>
 
-    <?php // echo $form->field($model, 'Stu_lastname_en') ?>
-
-    <?php // echo $form->field($model, 'Stu_name_th') ?>
-
-    <?php // echo $form->field($model, 'Stu_lastname_th') ?>
-
-    <?php // echo $form->field($model, 'Stu_birht_day') ?>
-
-    <?php // echo $form->field($model, 'Stu_Add') ?>
-
-    <?php // echo $form->field($model, 'Stu_mail') ?>
-
-    <?php // echo $form->field($model, 'Stu_phone') ?>
-
-    <?php // echo $form->field($model, 'Fac_id') ?>
-
-    <?php // echo $form->field($model, 'teacher_id') ?>
-
-    <?php // echo $form->field($model, 'Stu_avatar') ?>
 
     <?php // echo $form->field($model, 'major_id') ?>
 

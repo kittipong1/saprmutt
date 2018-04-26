@@ -41,8 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
                
             }],
-            'create_date',
-            'modified_date',
+            ['attribute'=>'create_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->create_date));
+                return $return;
+            },],
+             ['attribute'=>'modified_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->modified_date));
+                return $return;
+            },],
             'active',
             'news_description:ntext',
         ],

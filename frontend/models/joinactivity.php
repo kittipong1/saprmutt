@@ -46,7 +46,7 @@ class joinactivity extends \yii\db\ActiveRecord
             'studennumber' => 'รหัสนักศึกษา',
             'id_actitaty' => 'รหัสกิจกรรม',
             'csv_path'=>'file *.csv',
-            'Student_name'=>'ชื่อนักศึกษา'
+            'Student_name'=>'ชื่อนักศึกษา',
         ];
     }
     public function getActivity()

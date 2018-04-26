@@ -12,28 +12,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="studen-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-   
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'Id_information',
             'Stu_id',
-            'Stu_id_card',
             'idtitle_id',
-            'Stu_name_en',
-            'Stu_lastname_en',
             'Stu_name_th',
             'Stu_lastname_th',
-            'Stu_birht_day',
-            'Stu_Add:ntext',
-            'Stu_mail',
-            'Stu_phone',
             'Fac_id',
             'teacher_id',
-            'Stu_avatar',
             'major_id',
         ],
     ]) ?>

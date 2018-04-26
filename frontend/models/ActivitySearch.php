@@ -41,7 +41,7 @@ class ActivitySearch extends Activity
      */
     public function search($params)
     {
-        $query = Activity::find();
+        $query = Activity::find()->orderBy(['actitaty_id'=>SORT_DESC]);
 
         // add conditions that should always apply here
 

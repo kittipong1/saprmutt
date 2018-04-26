@@ -60,7 +60,7 @@ Yii::setAlias('@demo01', '@web');
   		 ?>
        <p>ชื่อภาษาอังกฤษ : <?=$profile->name_en?> <?=$profile->lastname_en?></p>
        <p>ชื่อภาษาไทย : <?=$profile->name_th?> <?=$profile->lastname_th?></p>
-       <p>วันเกิด : <?=$profile->birht_day?></p>
+       <p>วันเกิด : <?php $SnewDate = date("d-m-Y", strtotime($profile->birht_day)); echo $SnewDate?></p>
        <p>ที่อยู่ : <?=$profile->Add?></p>
 
        <p>Email : <?=$profile->mail?></p>

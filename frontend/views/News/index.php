@@ -62,7 +62,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             }],
             // 'create_date',
-             'modified_date',
+             ['attribute'=>'modified_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->modified_date));
+                return $return;
+            },],
             // 'news_view',
             //  ['attribute'=>'active',
             // 'contentOptions' => ['class' => 'text-center'],

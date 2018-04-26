@@ -71,7 +71,7 @@ Yii::setAlias('@demo01', '@web');
 
               ';
               
-                
+                $SnewDate = date("d-m-Y", strtotime($news->create_date));
                   
               echo '</div>
               </div>
@@ -83,7 +83,7 @@ Yii::setAlias('@demo01', '@web');
                 <p>'.$news->news_explain.'</p>
                 <ul class="post-meta"><p>
                 '.$news->news_description.'</p>
-                  <li>'.$news->create_date.'</li>
+                  <li>'.$SnewDate.'</li>
                 </ul>
                 <p>
                   

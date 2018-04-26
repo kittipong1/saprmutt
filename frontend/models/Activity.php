@@ -63,6 +63,7 @@ class Activity extends \yii\db\ActiveRecord
             'act_comment' => 'เพิ่มเติม #เป็นกล่องข้อความให้คอมเม้นเพิ่มเติม',
             'status' => 'สถานะกิจกรรม',
             'id_username' => 'สร้างโดย',
+            'Countstudent'=>'จำนวนผู้เข้าร่วมกิจกรรม',
         ];
     }
 

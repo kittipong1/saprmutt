@@ -168,8 +168,7 @@ $this->registerJs($sc, \yii\web\View::POS_READY);
                                   </table>
                               </div>
                           </div>
-                  </div>
-            </div>
+             
       </div>
     </div>
 

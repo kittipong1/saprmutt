@@ -50,8 +50,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'filter'=> Html::activeDropDownList($searchModel,'typefac_id',ArrayHelper::map(Factype::find()->orderBy(['id_type'=>SORT_ASC])->all(),'id_type','type_name'),['class'=>'form-control','prompt' => 'เลือกประเภทกิจกรรม']),],
             // 'typefac_id',
             // 'act_term',
-             'act_sday',
-             'act_eday',
+              ['attribute'=>'act_sday',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->act_sday));
+                return $return;
+            },],
+              ['attribute'=>'act_eday',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->act_eday));
+                return $return;
+            },],
             // 'act_comment:ntext',
             ['attribute'=>'status',
             'filter'=> Html::activeDropDownList($searchModel,'status',['active'=>'เปิด','disable'=>'ปิด'],['class'=>'form-control','prompt' => 'เลือกสถานะกิจกรรม']),

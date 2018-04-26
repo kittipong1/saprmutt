@@ -19,7 +19,7 @@ class StudenSearch extends studen
     {
         return [
             [['Id_information', 'teacher_id'], 'integer'],
-            [['Stu_id', 'Stu_id_card', 'idtitle_id', 'Stu_name_en', 'Stu_lastname_en', 'Stu_name_th', 'Stu_lastname_th', 'Stu_birht_day', 'Stu_Add', 'Stu_mail', 'Stu_phone', 'Fac_id', 'Stu_avatar'], 'safe'],
+            [['Stu_id', 'idtitle_id', 'Stu_name_th', 'Stu_lastname_th','Fac_id', 'Stu_avatar'], 'safe'],
         ];
     }
 

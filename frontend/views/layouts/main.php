@@ -118,7 +118,7 @@ Student Activities of RMUTT
                             }
                                
                             if(Yii::$app->user->identity->auth_status == 'deputy'){
-                                echo '<li>'.Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม',Url::to(['joinactivity/index']).'?NewsSearch%5Buser_id%5D='.Yii::$app->user->identity->id).'</li>';
+                                echo '<li>'.Html::a('เพิ่มรายชื่อการเข้าร่วมกิจกรรม',Url::to(['joinactivity/index'])).'</li>';
                             }
 
 

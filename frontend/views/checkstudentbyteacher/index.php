@@ -78,7 +78,6 @@ $this->params['breadcrumbs'][] = $this->title;
             return '<p style="color:red">ไม่ครบ</p>';}
             },],
 
-            ['class' => 'yii\grid\ActionColumn','template' => '{view}'],
         ],
     ]); ?>
 </div>

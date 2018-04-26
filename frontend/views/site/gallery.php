@@ -40,10 +40,10 @@ Yii::setAlias('@demo01', '@web');
           <div class="col-md-9 page-content">
           <div>
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-            <!--   <li role="presentation" class="<?=$videos?>"><a href="#video" aria-controls="home" role="tab" data-toggle="tab">คลังวิดีโอ</a></li> -->
-              <li role="presentation" class="<?=$photos?>"><a href="#photo" aria-controls="profile" role="tab" data-toggle="tab">คลังรูปภาพ</a></li>
-            </ul>
+              <ul class="nav nav-tabs">
+                  <li class="active"><a href="#" data-toggle="tab" style="color: #f0ad4e;"><i class="fa fa-newspaper-o"></i>คลังรูปภาพ</a></li>
+              </ul>
+         
             <!-- Tab panes -->
             <div class="tab-content">
               <!--Start Video-->
@@ -111,6 +111,7 @@ Yii::setAlias('@demo01', '@web');
                             <?php  
                               
                                 foreach ($album as $key => $value) {
+                                  $SnewDate = date("d-m-Y", strtotime($album[$key]->create_date));
                                 echo ' <div class="col-md-4 col-sm-6 col-xs-12">
                                 <a href="#">
                                 <div class="team-member">
@@ -123,7 +124,7 @@ Yii::setAlias('@demo01', '@web');
                                     <p><b>'.Html::a($album[$key]->album_name,Url::to(['site/photo']).'/?id='.$album[$key]->album_id).'</b></p>
                                     <p>'.$album[$key]->album_agencies.'</p>
                                     <div class="member-footer">
-                                      <p><small><i class="fa fa-calendar"></i> '.$album[$key]->create_date.'<span class="pull-right"><i class="fa fa-eye"></i> '.$album[$key]->album_view.'</span></small>
+                                      <p><small><i class="fa fa-calendar"></i> '.$SnewDate.'</small>
                                       </div>
                                   </div>
                                 </div>

@@ -37,7 +37,7 @@ class FacType extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_type' => 'Id Type',
+            'id_type' => 'รหัส',
             'type_name' => 'ประเภทของกิจกรรม',
         ];
     }
