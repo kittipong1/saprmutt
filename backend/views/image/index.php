@@ -55,7 +55,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             }],
              ['attribute'=>'modified_date','contentOptions' => ['class' => 'text-center'],
-            'headerOptions' => ['class' => 'text-center']
+            'headerOptions' => ['class' => 'text-center'],
+            'value'=> function($model) {
+                return date("d-m-Y", strtotime($model->modified_date));
+            },
              ],
 
             ['class' => 'yii\grid\ActionColumn'],

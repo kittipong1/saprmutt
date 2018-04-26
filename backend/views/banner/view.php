@@ -31,10 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'ban_name',
             'ban_link:ntext',
             'ban_image',
-            'create_date',
-            'modified_date',
-            'start_date',
-            'end_date',
+            ['attribute'=>'create_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->create_date));
+                return $return;
+            },],
+             ['attribute'=>'modified_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->modified_date));
+                return $return;
+            },],
+             ['attribute'=>'start_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->start_date));
+                return $return;
+            },],
+             ['attribute'=>'end_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->end_date));
+                return $return;
+            },],
+           
             'view',
             'ban_detail:ntext',
         ],

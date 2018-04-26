@@ -29,8 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'album_id',
             'user_id',
             'album_name:ntext',
-            'create_date',
-            'modified_date',
+             ['attribute'=>'create_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->create_date));
+                return $return;
+            },],
+             ['attribute'=>'modified_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->modified_date));
+                return $return;
+            },],
             //'album_view',
             'album_agencies:ntext',
         ],

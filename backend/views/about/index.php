@@ -31,9 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //'about_id',
             //'user_id',
             //'about_description:ntext',
-            'create_date',
-       
-            'midified_date',
+              ['attribute'=>'create_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->create_date));
+                return $return;
+            },],
+             ['attribute'=>'midified_date',
+            'value'=> function($model){
+                $return  = date("d-m-Y", strtotime($model->midified_date));
+                return $return;
+            },],
             // 'about_view',
 
             ['class' => 'yii\grid\ActionColumn','template' => '{update}'],
